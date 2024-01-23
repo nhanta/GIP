@@ -192,3 +192,4 @@ def gain (data_x, gain_parameters):
           
   return imputed_data
 # End of programe
+# .
