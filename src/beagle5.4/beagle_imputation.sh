@@ -102,4 +102,4 @@ echo "STEP 6: Generate a list of the reference panel sample IDs"
 bcftools query -l 1000GP_AF_chr22.vcf.gz \
     > "1000GP_sample_IDs.txt"
 
-eho "Done"
+echo "Done"
