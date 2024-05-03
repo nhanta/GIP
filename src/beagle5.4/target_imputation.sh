@@ -1,10 +1,11 @@
 #!/bin/bash
 ref_genome_dir=$1 # /work/users/minhnth/gatk/hg38.fasta
 input_dir=$2 # ../data/obesity
-output_dir=$3 # ../data/obesity/imputation_output/
-ref_panel=$4
-genetic_map=$5
-num_threads=$6
+file_name=$3
+output_dir=$4 # ../data/obesity/imputation_output/
+ref_panel=$5
+genetic_map=$6
+num_threads=$7
 
 mkdir ${output_dir}
 
@@ -14,7 +15,7 @@ bcftools norm \
 --check-ref \
 -w \
 -f ${ref_genome_dir} \
-${input_dir}/hla.vcf \
+${input_dir}/${file_name} \
 -o ${output_dir}/biallelic_snps.vcf
 
 # A comma-separated string of chrs to keep
