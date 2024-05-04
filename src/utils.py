@@ -248,7 +248,7 @@ def read_vcf(vcf_path):
                   vcf_names = [x for x in line.split('\t')]
                   break
     ifile.close()
-    data = pd.read_csv(vcf_path, comment='#', delim_whitespace=True, header=None, names=vcf_names)
+    data = pd.read_csv(vcf_path, comment='#', sep="\s+", header=None, names=vcf_names)
     return data
 
 def get_data(X, miss_rate):
@@ -260,3 +260,11 @@ def get_data(X, miss_rate):
     miss_data_x = X.copy()
     miss_data_x[data_m == 0] = ".|."
     return X, miss_data_x, data_m
+  
+def save_vcf(data, output_VCF):
+  # Header for vcf file
+  # Header for vcf file
+  header = """##fileformat=VCFv4.1\n"""
+  with open(output_VCF, 'w') as vcf:
+    vcf.write(header)
+  data.to_csv(output_VCF, sep="\t", mode='a', index=False)

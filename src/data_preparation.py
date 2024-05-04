@@ -1,5 +1,5 @@
 import pandas as pd
-from utils import get_data
+from utils import get_data, read_vcf, save_vcf
 import argparse
 
 parser = argparse.ArgumentParser(
@@ -16,17 +16,6 @@ vcf_path = "../data/HLA/" + args.data_name + ".vcf"
 output_VCF = "../data/HLA/" + args.data_name + "." + str(rate) + ".missing.vcf"
 output_mask = "../data/HLA/" + args.data_name + "." + str(rate) + ".mask.csv"
 
-
-# Read a vcf file
-def read_vcf(vcf_path):
-    with open(vcf_path, "rt") as ifile:
-          for line in ifile:
-            if line.startswith("#CHROM"):
-                  vcf_names = [x for x in line.split('\t')]
-                  break
-    ifile.close()
-    data = pd.read_csv(vcf_path, comment='#', delim_whitespace=True, header=None, names=vcf_names)
-    return data
 
 if __name__ == '__main__':
 
@@ -199,9 +188,7 @@ if __name__ == '__main__':
 ##bcftools_viewCommand=view -R HLA1_chr6.bed 1000GP_AF_chr6.vcf.gz; Date=Thu Mar 28 08:24:00 2024
 """
     print("********************************** SAVING **********************************")
-    with open(output_VCF, 'w') as vcf:
-        vcf.write(header)
-    gn.to_csv(output_VCF, sep="\t", mode='a', index=False)
+    save_vcf(gn, output_VCF)
     pd.DataFrame(columns = list(gn.columns)[9::], data = m).to_csv(output_mask)
     print("")
     print("********************************* FINISHED *********************************")

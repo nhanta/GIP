@@ -46,6 +46,7 @@ def main (args):
   
   method = args.method
   ori_data = args.ori_data
+  output_data = args.output_data
   mask_data = args.mask_data
   num_threads = args.num_threads
   
@@ -76,9 +77,8 @@ def main (args):
   acc = eval_acc(np.ravel(ori_data_x[data_m==0]), np.ravel(imputed_data_x[data_m==0]))
   print()
   print('RMSE Performance: ' + str(np.round(rmse, 4)))
-  #imputed_data_x.to_csv("data/gip_imputed_" + data_name)
   #evaluation.to_csv("results/gip_evaluated_" + data_name)
-  
+  imputed_data_x.to_csv(output_data, header = False, index = False)
   return imputed_data_x, acc, rmse
 
 if __name__ == '__main__':  
@@ -93,7 +93,12 @@ if __name__ == '__main__':
   parser.add_argument(
       '--ori_data',
       help='original data',
-      default='spam',
+      default='gip',
+      type=str)
+  parser.add_argument(
+      '--output_data',
+      help='imputed data',
+      default='gip',
       type=str)
   parser.add_argument(
       '--mask_data',

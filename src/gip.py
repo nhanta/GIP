@@ -37,7 +37,8 @@ from sklearn import preprocessing
 
 def round(x):
     return tf.where(tf.equal(x, 0), tf.zeros_like(x), tf.ones_like(x))
-
+  
+# Activation function: g
 def g(X, Y):
   A, B = prob(X)
   # Define a function to compute prob(h_{k+1}|h_1,...,h_k) values for each row pair
