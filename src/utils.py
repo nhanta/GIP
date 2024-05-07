@@ -27,6 +27,7 @@
 # Necessary packages
 import numpy as np
 import pandas as pd
+import gzip
 #import tensorflow as tf
 ##IF USING TF 2 use following import to still use TF < 2.0 Functionalities
 import tensorflow.compat.v1 as tf
@@ -47,7 +48,7 @@ def normalization (data, parameters=None):
   # Parameters
   _, dim = data.shape
   norm_data = data.copy()
-  
+
   if parameters is None:
   
     # MixMax normalization
@@ -263,8 +264,12 @@ def get_data(X, miss_rate):
   
 def save_vcf(data, output_VCF):
   # Header for vcf file
-  # Header for vcf file
   header = """##fileformat=VCFv4.1\n"""
   with open(output_VCF, 'w') as vcf:
     vcf.write(header)
   data.to_csv(output_VCF, sep="\t", mode='a', index=False)
+
+def save_hap(data, output_path):
+   cols = list(range(data.shape[1]))
+   df = pd.DataFrame(data = data, columns = cols)
+   df.to_csv(output_path, header = False, index = False, sep ="\t", mode='a')
