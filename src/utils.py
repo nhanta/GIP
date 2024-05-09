@@ -260,7 +260,7 @@ def get_data(X, miss_rate):
     data_m = binary_sampler(1-miss_rate, no, dim)
     miss_data_x = X.copy()
     miss_data_x[data_m == 0] = ".|."
-    return X, miss_data_x, data_m
+    return X, miss_data_x
   
 def save_vcf(data, output_VCF):
   # Header for vcf file
