@@ -46,6 +46,7 @@ def main (args):
   method = args.method
   missing_data = args.missing_data
   output_data = args.output_data
+  num_al = args.num_al
   num_threads = args.num_threads
   
   gain_parameters = {'batch_size': args.batch_size,
@@ -61,7 +62,7 @@ def main (args):
   miss_data_x = miss_data_x.astype(float)
  
   # Impute missing data
-  imputed_data_x = imputation(miss_data_x, gain_parameters).impute(method, num_threads)
+  imputed_data_x = imputation(miss_data_x, gain_parameters, num_al).impute(method, num_threads)
   print()
   save_hap(imputed_data_x.astype(int), output_data) 
 
@@ -84,13 +85,11 @@ if __name__ == '__main__':
       help='imputed data',
       default='gip',
       type=str)
-  '''
   parser.add_argument(
-      '--mask_data',
-      help='mask data',
-      default='spam',
-      type=str)
-  '''
+      '--num_al',
+      help='number of alleles',
+      default=int,
+      type=int)
   parser.add_argument(
       '--batch_size',
       help='the number of samples in mini-batch',

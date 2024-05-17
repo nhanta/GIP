@@ -214,7 +214,7 @@ def sample_batch_index(total, batch_size):
   batch_idx = total_idx[:batch_size]
   return batch_idx
   
-def prob(X):
+def prob(X, num_al):
   '''
   Calculate probability(h_{k+1}|h_1,...,h_k)
   Args:
@@ -223,20 +223,33 @@ def prob(X):
   Returns:
     - p: a probability
   '''
-  N, _ = X.get_shape().as_list() # Get the shape of the tensors
+  # Define a shape operation
+  shape_X = tf.shape(X)[0]
 
-  #k = N - 1
-  k = 4006
+  # Example input data
+  feed_dict = {
+    X: X
+  } 
+  # Get the shape of the tensors
+  # Create and run a session to evaluate the shape
+  with tf.compat.v1.Session() as sess:
+    N = sess.run(shape_X, feed_dict=feed_dict)
+
+  print("aaaaaaaaaaaaaaaaa")
+  print(N)
+  k = N - 1
+
   # Calculate theta
+  # Number of alleles -1 (num_al - 1) is number of mutation in a locus
   theta = 0
   for m in range(1, k + 1):
     theta += 1/m
-  theta = 1/theta
+  theta = (num_al - 1)/theta
   
   # Probability 
   A = k/(k + theta) 
   # Probability
-  B = (1/2) * (theta/(k + theta))
+  B = (1/num_al) * (theta/(k + theta))
     
   return A, B
     
