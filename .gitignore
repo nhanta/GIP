@@ -4,3 +4,5 @@ imputation_output/
 Obesity/
 1000GP_AF_chr6.vcf.gz
 1000GP_AF_chr6.vcf.gz.tbi
+.idea
+.vscode

@@ -1,0 +1,29 @@
+name: gip
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.7
+  - bcftools
+  - plink
+  - sra-tools
+  - fastqc
+  - trimmomatic
+  - bwa
+  - tabix
+  - vcftools
+  - samtools
+  - gatk4
+  - beagle
+  - pip:
+    - bed-reader
+    - captum
+    - argparse
+    - notebook
+    - tensorflow==1.15.5
+    - pandas
+    - numpy
+    - scipy
+    - scikit-learn
+    - matplotlib
