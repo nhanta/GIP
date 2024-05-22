@@ -27,6 +27,7 @@
 # Necessary packages
 import numpy as np
 import pandas as pd
+import gzip
 #import tensorflow as tf
 ##IF USING TF 2 use following import to still use TF < 2.0 Functionalities
 import tensorflow.compat.v1 as tf
@@ -47,7 +48,7 @@ def normalization (data, parameters=None):
   # Parameters
   _, dim = data.shape
   norm_data = data.copy()
-  
+
   if parameters is None:
   
     # MixMax normalization
@@ -213,7 +214,7 @@ def sample_batch_index(total, batch_size):
   batch_idx = total_idx[:batch_size]
   return batch_idx
   
-def prob(X):
+def prob(X, num_al):
   '''
   Calculate probability(h_{k+1}|h_1,...,h_k)
   Args:
@@ -222,20 +223,33 @@ def prob(X):
   Returns:
     - p: a probability
   '''
-  N, _ = X.get_shape().as_list() # Get the shape of the tensors
+  # Define a shape operation
+  shape_X = tf.shape(X)[0]
 
-  #k = N - 1
-  k = 4006
+  # Example input data
+  feed_dict = {
+    X: X
+  } 
+  # Get the shape of the tensors
+  # Create and run a session to evaluate the shape
+  with tf.compat.v1.Session() as sess:
+    N = sess.run(shape_X, feed_dict=feed_dict)
+
+  print("aaaaaaaaaaaaaaaaa")
+  print(N)
+  k = N - 1
+
   # Calculate theta
+  # Number of alleles -1 (num_al - 1) is number of mutation in a locus
   theta = 0
   for m in range(1, k + 1):
     theta += 1/m
-  theta = 1/theta
+  theta = (num_al - 1)/theta
   
   # Probability 
   A = k/(k + theta) 
   # Probability
-  B = (1/2) * (theta/(k + theta))
+  B = (1/num_al) * (theta/(k + theta))
     
   return A, B
     
@@ -248,7 +262,7 @@ def read_vcf(vcf_path):
                   vcf_names = [x for x in line.split('\t')]
                   break
     ifile.close()
-    data = pd.read_csv(vcf_path, comment='#', delim_whitespace=True, header=None, names=vcf_names)
+    data = pd.read_csv(vcf_path, comment='#', sep="\s+", header=None, names=vcf_names)
     return data
 
 def get_data(X, miss_rate):
@@ -259,4 +273,16 @@ def get_data(X, miss_rate):
     data_m = binary_sampler(1-miss_rate, no, dim)
     miss_data_x = X.copy()
     miss_data_x[data_m == 0] = ".|."
-    return X, miss_data_x, data_m
+    return X, miss_data_x
+  
+def save_vcf(data, output_VCF):
+  # Header for vcf file
+  header = """##fileformat=VCFv4.1\n"""
+  with open(output_VCF, 'w') as vcf:
+    vcf.write(header)
+  data.to_csv(output_VCF, sep="\t", mode='a', index=False)
+
+def save_hap(data, output_path):
+   cols = list(range(data.shape[1]))
+   df = pd.DataFrame(data = data, columns = cols)
+   df.to_csv(output_path, header = False, index = False, sep ="\t", mode='a')

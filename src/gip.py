@@ -37,13 +37,14 @@ from sklearn import preprocessing
 
 def round(x):
     return tf.where(tf.equal(x, 0), tf.zeros_like(x), tf.ones_like(x))
-
-def g(X, Y):
-  A, B = prob(X)
+  
+# Activation function: g
+def g(X, Y, num_al):
+  alpha, beta = prob(X, num_al)
   # Define a function to compute prob(h_{k+1}|h_1,...,h_k) values for each row pair
   def compute_prob_k(X, y):
       # Compute intermediate values for the current row of X and all rows of Y
-      prob_k = A + B - tf.multiply(A, round(tf.abs(y - X)))
+      prob_k = alpha + beta - tf.multiply(alpha, round(tf.abs(y - X)))
       
       return tf.reduce_sum(prob_k, 0)
 
@@ -66,9 +67,10 @@ class imputation ():
   Returns:
     - imputed_data: imputed data
   '''
-  def __init__(self, data_x, parameters):
+  def __init__(self, data_x, parameters, num_al):
     self.data_x = data_x
     self.parameters = parameters
+    self.num_al = num_al
     
   def impute(self, method, num_threads):
     # Config tensorflow
@@ -134,7 +136,7 @@ class imputation ():
       # Concatenate Mask and Data
       inputs = tf.concat(values = [x, m], axis = 1) 
       G_h1 = tf.nn.relu(tf.matmul(inputs, G_W1) + G_b1)
-      G_h2 = g(G_h1, tf.matmul(G_h1, G_W2) + G_b2)   
+      G_h2 = g(G_h1, tf.matmul(G_h1, G_W2) + G_b2, self.num_al)   
       # MinMax normalized output
       G_prob = tf.nn.sigmoid(tf.matmul(G_h2, G_W3) + G_b3) 
       return G_prob

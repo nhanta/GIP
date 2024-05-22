@@ -25,8 +25,7 @@ import numpy as np
 import pandas as pd
 
 from gip import imputation
-from utils import rmse_loss
-from metrics import eval_acc
+from utils import save_hap
 
 def main (args):
   '''Main function for UCI letter and spam datasets.
@@ -45,8 +44,9 @@ def main (args):
   '''
   
   method = args.method
-  ori_data = args.ori_data
-  mask_data = args.mask_data
+  missing_data = args.missing_data
+  output_data = args.output_data
+  num_al = args.num_al
   num_threads = args.num_threads
   
   gain_parameters = {'batch_size': args.batch_size,
@@ -54,32 +54,17 @@ def main (args):
                      'alpha': args.alpha,
                      'iterations': args.iterations}
   
-  # Load original data and imputed data
-  ori_data_x = pd.read_csv(ori_data, sep = "\s+", header = None)
-  ori_data_x = ori_data_x.iloc[:, 5::].to_numpy()
-  ori_data_x = ori_data_x.astype(float)
-  
-  # Load mask data
-  data_m  = pd.read_csv(mask_data).set_index('Unnamed: 0')
-  data_m = pd.concat([data_m, data_m], axis = 1) # Convert diploid mask to haploid mask
-  data_m = data_m.to_numpy()
-  
-  # Missing data
-  miss_data_x = ori_data_x.copy()
-  miss_data_x[data_m == 0] = np.nan
-  
-  # Impute missing data
-  imputed_data_x = imputation(miss_data_x, gain_parameters).impute(method, num_threads)
+  # Load missing data
+  miss_data_x = pd.read_csv(missing_data, header = None, sep = " ").to_numpy()
 
-  # Report the RMSE performance
-  rmse = rmse_loss (ori_data_x, imputed_data_x, data_m)
-  acc = eval_acc(np.ravel(ori_data_x[data_m==0]), np.ravel(imputed_data_x[data_m==0]))
+  data_m = miss_data_x == "?"
+  miss_data_x[data_m] = np.nan
+  miss_data_x = miss_data_x.astype(float)
+ 
+  # Impute missing data
+  imputed_data_x = imputation(miss_data_x, gain_parameters, num_al).impute(method, num_threads)
   print()
-  print('RMSE Performance: ' + str(np.round(rmse, 4)))
-  #imputed_data_x.to_csv("data/gip_imputed_" + data_name)
-  #evaluation.to_csv("results/gip_evaluated_" + data_name)
-  
-  return imputed_data_x, acc, rmse
+  save_hap(imputed_data_x.astype(int), output_data) 
 
 if __name__ == '__main__':  
   
@@ -91,15 +76,20 @@ if __name__ == '__main__':
       default='gip',
       type=str)
   parser.add_argument(
-      '--ori_data',
-      help='original data',
-      default='spam',
+      '--missing_data',
+      help='missing data',
+      default='gip',
       type=str)
   parser.add_argument(
-      '--mask_data',
-      help='mask data',
-      default='spam',
+      '--output_data',
+      help='imputed data',
+      default='gip',
       type=str)
+  parser.add_argument(
+      '--num_al',
+      help='number of alleles',
+      default=int,
+      type=int)
   parser.add_argument(
       '--batch_size',
       help='the number of samples in mini-batch',
@@ -129,4 +119,4 @@ if __name__ == '__main__':
   args = parser.parse_args() 
   
   # Calls main function  
-  imputed_data, acc, rmse = main(args)
+  main(args)

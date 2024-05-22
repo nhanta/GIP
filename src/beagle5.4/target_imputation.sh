@@ -160,7 +160,7 @@ bcftools concat -f ${inputed_files} -Oz -o ${output_dir}/biallelic_combination.v
 rm ${inputed_files}
 
 # Sort SNPs
-bcftools sort ${output_dir}/biallelic_combination.vcf -Oz -o ${input_dir}/imputed_biallelic_geno.vcf
+bcftools sort ${output_dir}/biallelic_combination.vcf -Oz -o ${input_dir}/imputed_biallelic_beagle.vcf
 
 : << 'COMMENT'
 # List existing chromosomes
