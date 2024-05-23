@@ -28,4 +28,3 @@ cp ${data_path}/${data_name}.samples  ${output}/${data_name}.imputed.samples
 cp ${data_path}/${data_name}.legend.gz  ${output}/${data_name}.imputed.legend.gz
 
 bcftools convert --haplegendsample2vcf ${output}/${data_name}.imputed > ${output}/${data_name}.imputed.gip.vcf
-gunzip ${output}/${data_name}.imputed.hap.gz
