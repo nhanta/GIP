@@ -1,14 +1,28 @@
 #!/bin/bash
-data_path=$1 
+input_path=$1 
 data_name=$2 # Prefix name of data
-method=$3 
-num_al=$4
-num_threads=$5
 
-# Create output directory
-output=${data_path}/output
-mkdir ${output}
-parser.add_argument('ori_data', metavar='n', type=str, help='original data')
-parser.add_argument('missing_data', metavar='n', type=str, help='missing data')
-parser.add_argument('imputed_data', metavar='r', type=str, help='imputed data')
-gunzip ${output}/${data_name}.imputed.hap.gz
+# Unzip imputed haplotype data
+gunzip ${input_path}/output/${data_name}.missing.imputed.hap.gz
+
+# Diplotype to haplotype
+bcftools convert --haplegendsample ${input_path}/${data_name}.ori  ${input_path}/${data_name}.ori.vcf
+gunzip ${input_path}/${data_name}.ori.hap.gz
+
+echo "GIP"
+# Evaluate gip
+python gip/evaluation.py \
+${input_path}/${data_name}.ori.hap \
+${input_path}/${data_name}.missing.hap \
+${input_path}/output/${data_name}.missing.imputed.hap
+
+# Diplotype to haplotype
+bcftools convert --haplegendsample ${input_path}/output/${data_name}.missing.imputed.beagle ${input_path}/output/${data_name}.missing.imputed.beagle.vcf
+gunzip ${input_path}/output/${data_name}.missing.imputed.beagle.hap.gz
+
+echo "BEAGLE5.4"
+# Evaluate Beagle5.4
+python gip/evaluation.py \
+${input_path}/${data_name}.ori.hap \
+${input_path}/${data_name}.missing.hap \
+${input_path}/output/${data_name}.missing.imputed.beagle.hap
