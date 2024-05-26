@@ -20,7 +20,6 @@ for CHR in {1..22} X; do
         panel_SNPID_chr${CHR}.vcf.gz -Ou | \
     bcftools view -i 'INFO/VT="SNP" | INFO/VT="INDEL"' -Ou | \
     bcftools norm -f ${ref_genome} -d none -Ou | \
-    bcftools view -m 2 -M 2 -Ou | \
     bcftools view -g ^miss -Oz -o 1000GP_chr${CHR}.vcf.gz
 done
 
