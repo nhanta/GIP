@@ -9,8 +9,8 @@ num_threads=$7
 
 mkdir ${output_dir}
 
-bcftools convert --haplegendsample ${input_dir}/${file_name} ${input_dir}/${file_name}.vcf
-bcftools convert --haplegendsample2vcf ${input_dir}/${file_name} > ${input_dir}/${file_name}.vcf
+#bcftools convert --haplegendsample ${input_dir}/${file_name} ${input_dir}/${file_name}.vcf
+#bcftools convert --haplegendsample2vcf ${input_dir}/${file_name} > ${input_dir}/${file_name}.vcf
 
 # Convert multi allelic to bi allelic
 bcftools norm \

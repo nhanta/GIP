@@ -95,7 +95,7 @@ def main (args):
         # Read the contents of the file into a variable
         header = f.read()
 
-    save_vcf(imputed_data, output_data[0:-3] + "imputed" + "." + method + ".vcf", header)
+    save_vcf(pd.concat([ori_data.iloc[:, 0:9], imputed_data], axis = 1), output_data[0:-3] + "imputed" + "." + method + ".vcf", header)
 
 
 if __name__ == '__main__':  

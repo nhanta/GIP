@@ -7,9 +7,11 @@ parser = argparse.ArgumentParser(
                     description='Data generation',
                     epilog='Help')
 
+parser.add_argument('data_path', metavar='p', type=str, help='Data path')
 parser.add_argument('data_name', metavar='n', type=str, help='Prefix of data name')
 args = parser.parse_args()
-vcf_path = "../../data/HLA/" + args.data_name + ".vcf"
+
+vcf_path = args.data_path + "/" + args.data_name + ".vcf"
 
 if __name__ == '__main__':
 
@@ -27,6 +29,11 @@ if __name__ == '__main__':
     print("Import data may take several minutes, please wait...")
     print("")
 
+    # Load header
+    with open(args.data_path + "/" "HLA1.header.txt") as f:
+        # Read the contents of the file into a variable
+        header = f.read()
+
     # Load original data
     data = read_vcf(vcf_path)
     data.rename(columns={'NA21144\n':'NA21144'}, inplace=True)
@@ -34,7 +41,7 @@ if __name__ == '__main__':
     print("Number of all population: ", len(list(geno.columns)))
 
     # Load meta_data
-    meta_data = pd.read_csv("../../data/HLA/igsr-1000 genomes on grch38.tsv", sep = "\t")
+    meta_data = pd.read_csv(args.data_path + "/" + "igsr-1000 genomes on grch38.tsv", sep = "\t")
 
     # Select sub populations
     AFR = meta_data["Sample name"][meta_data["Superpopulation code"] == 'AFR']
@@ -69,51 +76,51 @@ if __name__ == '__main__':
 
     for rate in [0.02, 0.05, 0.1, 0.2, 0.25]:
         for p in ['all', 'AFR', 'AMR', 'EAS', 'EUR', 'SAS']:
-            output_miss_path = "../../data/HLA/" + args.data_name + "." + p \
+            output_miss_path = args.data_path + "/" + args.data_name + "." + p \
                 + "." + str(rate) + ".missing.vcf"
-            output_ori_data = "../../data/HLA/" + args.data_name + "." + p \
+            output_ori_data = args.data_path + "/" + args.data_name + "." + p \
                 + "." + str(rate) + ".ori.vcf"
             if p == 'all':
                 gn, geno_miss = get_data(geno, rate)
                 miss_data = pd.concat([data.iloc[:, 0:9], geno_miss], axis = 1)
                 ori_data = pd.concat([data.iloc[:, 0:9], gn], axis = 1)
-                save_vcf(miss_data, output_miss_path)
-                save_vcf(ori_data, output_ori_data)
+                save_vcf(miss_data, output_miss_path, header)
+                save_vcf(ori_data, output_ori_data, header)
 
             elif p == 'AFR':
                 gn, geno_miss = get_data(geno_afr, rate)
                 miss_data = pd.concat([data.iloc[:, 0:9], geno_miss], axis = 1)
                 ori_data = pd.concat([data.iloc[:, 0:9], gn], axis = 1)
-                save_vcf(miss_data, output_miss_path)
-                save_vcf(ori_data, output_ori_data)
+                save_vcf(miss_data, output_miss_path, header)
+                save_vcf(ori_data, output_ori_data, header)
 
             elif p == 'AMR':
                 gn, geno_miss = get_data(geno_amr, rate)
                 miss_data = pd.concat([data.iloc[:, 0:9], geno_miss], axis = 1)
                 ori_data = pd.concat([data.iloc[:, 0:9], gn], axis = 1)
-                save_vcf(miss_data, output_miss_path)
-                save_vcf(ori_data, output_ori_data)
+                save_vcf(miss_data, output_miss_path, header)
+                save_vcf(ori_data, output_ori_data, header)
 
             elif p == 'EAS':
                 gn, geno_miss = get_data(geno_eas, rate)
                 miss_data = pd.concat([data.iloc[:, 0:9], geno_miss], axis = 1)
                 ori_data = pd.concat([data.iloc[:, 0:9], gn], axis = 1)
-                save_vcf(miss_data, output_miss_path)
-                save_vcf(ori_data, output_ori_data)
+                save_vcf(miss_data, output_miss_path, header)
+                save_vcf(ori_data, output_ori_data, header)
             
             elif p == 'EUR':
                 gn, geno_miss = get_data(geno_eur, rate)
                 miss_data = pd.concat([data.iloc[:, 0:9], geno_miss], axis = 1)
                 ori_data = pd.concat([data.iloc[:, 0:9], gn], axis = 1)
-                save_vcf(miss_data, output_miss_path)
-                save_vcf(ori_data, output_ori_data)
+                save_vcf(miss_data, output_miss_path, header)
+                save_vcf(ori_data, output_ori_data, header)
             
             elif p == 'SAS':
                 gn, geno_miss = get_data(geno_sas, rate)
                 miss_data = pd.concat([data.iloc[:, 0:9], geno_miss], axis = 1)
                 ori_data = pd.concat([data.iloc[:, 0:9], gn], axis = 1)
-                save_vcf(miss_data, output_miss_path)
-                save_vcf(ori_data, output_ori_data)
+                save_vcf(miss_data, output_miss_path, header)
+                save_vcf(ori_data, output_ori_data, header)
 
     print("")
     print("********************************* FINISHED *********************************")
