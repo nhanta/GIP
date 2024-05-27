@@ -1,32 +1,34 @@
 #!/bin/bash
 ref_genome=$1
+: << 'COMMENT'
 # Generate a chromosome renaming file
 for CHR in {1..23} X ; do 
     echo ${CHR} chr${CHR}
 done >> chr_names.txt
+COMMENT
+# Multiple processing commands piped together
+for CHR in {1..22} X; do
+    bcftools annotate --rename-chrs chr_names.txt \
+        ../ref_panel/ALL.chr${CHR}_GRCh38.genotypes.20170504.vcf.gz -Ou | \
+    bcftools view -i 'INFO/VT="SNP" | INFO/VT="INDEL"' -Ou | \
+    bcftools norm -f ${ref_genome} -d none -Ou | \
+    bcftools view -g ^miss -Oz -o panel_SNPID_chr${CHR}.vcf.gz
+done
 
 # In order to preserve them throughout the protocol, 
 #set ID field with unique IDs e.g. in format CHR_POS_REF_ALT
 for CHR in {1..22} X; do
     bcftools annotate \
     --set-id '%CHROM\_%POS\_%REF\_%ALT' \
-    ../ref_panel/ALL.chr${CHR}_GRCh38.genotypes.20170504.vcf.gz  \
-    -Oz -o panel_SNPID_chr${CHR}.vcf.gz
-done
-
-# Multiple processing commands piped together
-for CHR in {1..22} X; do
-    bcftools annotate --rename-chrs chr_names.txt \
-        panel_SNPID_chr${CHR}.vcf.gz -Ou | \
-    bcftools view -i 'INFO/VT="SNP" | INFO/VT="INDEL"' -Ou | \
-    bcftools norm -f ${ref_genome} -d none -Ou | \
-    bcftools view -g ^miss -Oz -o 1000GP_chr${CHR}.vcf.gz
+    panel_SNPID_chr${CHR}.vcf.gz  \
+    -Oz -o 1000GP_chr${CHR}.vcf.gz
 done
 
 # Fix the chromosome X ploidy to phased diploid
 # Requires a ploidy.txt file containing 
 # space-separated CHROM,FROM,TO,SEX,PLOIDY 
 echo "chrX 1 156040895 M 2" > ploidy.txt
+
 bcftools +fixploidy \
     1000GP_chrX.vcf.gz -Ov -- -p ploidy.txt | \
     sed 's#0/0#0\|0#g;s#1/1#1\|1#g' | \

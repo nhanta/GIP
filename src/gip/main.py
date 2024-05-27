@@ -74,7 +74,7 @@ def main (args):
   # Impute missing data
   imputed_data_x = imputation(miss_data_x, gain_parameters, num_al).impute(method, num_threads)
   
-  save_hap(imputed_data_x.astype(int), output_data)
+  save_hap(imputed_data_x.astype(int).astype(str), output_data)
 
   if num_al != 2:
     ori_data = read_vcf(missing_data[0:-11] + "ori.vcf")
@@ -85,14 +85,17 @@ def main (args):
     # Convert diploid to haploid for original data
     ori_hap = diploid_to_haploid(ori_geno).to_numpy()
     save_hap(ori_hap, missing_data[0:-11] + "ori.hap")
-    imputed_data_value = haploid_to_diploid(imputed_data_x).to_numpy()
+
+    # Output the imputed diploid data
+    im_data = pd.DataFrame(data = imputed_data_x.astype(int).astype(str), columns = list(range(2*len(ori_col))))
+    imputed_data_value = haploid_to_diploid(im_data).to_numpy()
     imputed_data = pd.DataFrame(data = imputed_data_value, columns = ori_col)
 
-    with open(missing_data[0:-3] + "header.vcf") as f:
+    with open(missing_data[0:-3] + "header.txt") as f:
         # Read the contents of the file into a variable
         header = f.read()
 
-    save_vcf(imputed_data, output_data[-3] + "imputed" + method + ".vcf", header)
+    save_vcf(imputed_data, output_data[0:-3] + "imputed" + "." + method + ".vcf", header)
 
 
 if __name__ == '__main__':  

@@ -294,7 +294,7 @@ def diploid_to_haploid(data):
         
     return(df)
 
-# Convert haploid to diploid
+# Convert haploid to diploid with data frame
 def haploid_to_diploid(df):    
     # Function to merge two columns with a separator
     def merge_columns(df, col1, col2):
@@ -303,6 +303,7 @@ def haploid_to_diploid(df):
     # List to hold the merged columns
     merged_columns = []
     l = df.shape[1] - 1
+    
     # Loop through pairs of adjacent columns
     for i in range(0, l, 2):
         merged_col = merge_columns(df, df.columns[i], df.columns[i+1])
