@@ -45,3 +45,37 @@ Next, we convert PLINK file to one vcf file for training model:
 
 ## Prediction
 We use classical machine learning models, such as [Logistic Regression, Decision Tree, and SVM](https://github.com/nhanta/Advanced_Methods_for_Disease_Risk_Prediction/blob/main/lr_dt_svm.py) to select importance features. Besides, we use a [Neural-Network Feature Selection](https://github.com/nhanta/Advanced_Methods_for_Disease_Risk_Prediction/blob/main/lr_dt_svm.py) for that. 
+
+
+# Generate missing data
+```
+python data_preparation.py \
+HLA1_chr6 
+```
+
+# Imputation by beagle
+```
+bash target_imputation.sh \
+/work/users/minhnth/gatk/hg38.fasta \
+../../data/HLA/ \
+HLA1_chr6.SAS.0.25.missing \
+../../data/HLA/output/ \
+/work/users/minhnth/obesity/imputation/ref_panel \
+/work/users/minhnth/obesity/imputation/genetic_map_for_imputation \
+70
+```
+# Imputation by GIP
+```
+bash gip.sh \
+../data/HLA \
+HLA1_chr6.SAS.0.25.missing \
+gip \
+2 \
+70 
+```
+# Evaluation for GIP and Beagle 5.4
+```
+bash evaluation.sh \
+../data/HLA/ \
+HLA1_chr6.SAS.0.25 
+```

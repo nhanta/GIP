@@ -214,7 +214,7 @@ def sample_batch_index(total, batch_size):
   batch_idx = total_idx[:batch_size]
   return batch_idx
   
-def prob(X, num_al):
+def prob(num_al, N):
   '''
   Calculate probability(h_{k+1}|h_1,...,h_k)
   Args:
@@ -223,20 +223,7 @@ def prob(X, num_al):
   Returns:
     - p: a probability
   '''
-  # Define a shape operation
-  shape_X = tf.shape(X)[0]
 
-  # Example input data
-  feed_dict = {
-    X: X
-  } 
-  # Get the shape of the tensors
-  # Create and run a session to evaluate the shape
-  with tf.compat.v1.Session() as sess:
-    N = sess.run(shape_X, feed_dict=feed_dict)
-
-  print("aaaaaaaaaaaaaaaaa")
-  print(N)
   k = N - 1
 
   # Calculate theta
@@ -275,9 +262,7 @@ def get_data(X, miss_rate):
     miss_data_x[data_m == 0] = ".|."
     return X, miss_data_x
   
-def save_vcf(data, output_VCF):
-  # Header for vcf file
-  header = """##fileformat=VCFv4.1\n"""
+def save_vcf(data, output_VCF, header = """##fileformat=VCFv4.1\n"""):
   with open(output_VCF, 'w') as vcf:
     vcf.write(header)
   data.to_csv(output_VCF, sep="\t", mode='a', index=False)
@@ -286,3 +271,45 @@ def save_hap(data, output_path):
    cols = list(range(data.shape[1]))
    df = pd.DataFrame(data = data, columns = cols)
    df.to_csv(output_path, header = False, index = False, sep ="\t", mode='a')
+
+# Convert diploid to haploid
+def diploid_to_haploid(data):    
+# Define the columns to split and the separator
+    columns_to_split = data.columns
+    df = pd.DataFrame()
+    value = []
+    # Split the specified columns
+    for col in columns_to_split:
+        try:
+            # Split the column into multiple columns
+            split_cols = data[col].str.split('|', expand=True)
+        except:
+            split_cols = data[col].str.split('/', expand=True)
+
+        # Rename the split columns to avoid name clashes
+        split_cols.columns = [f"{col}_{i+1}" for i in range(split_cols.shape[1])]
+        
+        # Concatenate the split columns back to the original DataFrame
+        df = pd.concat([df, split_cols], axis=1)
+        
+    return(df)
+
+# Convert haploid to diploid with data frame
+def haploid_to_diploid(df):    
+    # Function to merge two columns with a separator
+    def merge_columns(df, col1, col2):
+        return df[col1].astype(str) + "|" + df[col2].astype(str)
+
+    # List to hold the merged columns
+    merged_columns = []
+    l = df.shape[1] - 1
+    
+    # Loop through pairs of adjacent columns
+    for i in range(0, l, 2):
+        merged_col = merge_columns(df, df.columns[i], df.columns[i+1])
+        merged_columns.append(merged_col)
+
+    # Create a new DataFrame with the merged columns
+    merged_df = pd.DataFrame(merged_columns).T
+
+    return(merged_df)

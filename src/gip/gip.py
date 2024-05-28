@@ -39,8 +39,8 @@ def round(x):
     return tf.where(tf.equal(x, 0), tf.zeros_like(x), tf.ones_like(x))
   
 # Activation function: g
-def g(X, Y, num_al):
-  alpha, beta = prob(X, num_al)
+def g(X, Y, num_al, N):
+  alpha, beta = prob(num_al, N)
   # Define a function to compute prob(h_{k+1}|h_1,...,h_k) values for each row pair
   def compute_prob_k(X, y):
       # Compute intermediate values for the current row of X and all rows of Y
@@ -68,7 +68,7 @@ class imputation ():
     - imputed_data: imputed data
   '''
   def __init__(self, data_x, parameters, num_al):
-    self.data_x = data_x
+    self.data_x = data_x.T
     self.parameters = parameters
     self.num_al = num_al
     
@@ -79,7 +79,7 @@ class imputation ():
     )
     # Define mask matrix
     data_m = 1-np.isnan(self.data_x)
-  
+
     # System parameters
     batch_size = self.parameters['batch_size']
     hint_rate = self.parameters['hint_rate']
@@ -136,7 +136,7 @@ class imputation ():
       # Concatenate Mask and Data
       inputs = tf.concat(values = [x, m], axis = 1) 
       G_h1 = tf.nn.relu(tf.matmul(inputs, G_W1) + G_b1)
-      G_h2 = g(G_h1, tf.matmul(G_h1, G_W2) + G_b2, self.num_al)   
+      G_h2 = g(G_h1, tf.matmul(G_h1, G_W2) + G_b2, self.num_al, no)   
       # MinMax normalized output
       G_prob = tf.nn.sigmoid(tf.matmul(G_h2, G_W3) + G_b3) 
       return G_prob
@@ -242,7 +242,7 @@ class imputation ():
     imputed_data = renormalization(imputed_data, norm_parameters)  
     
     # Rounding
-    imputed_data = rounding(imputed_data, self.data_x)  
+    imputed_data = rounding(imputed_data.T, self.data_x.T)  
             
     return imputed_data
     
