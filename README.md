@@ -97,5 +97,16 @@ gip \
 ```
 bash evaluation.sh \
 ../data/HLA/ \
-HLA1_chr6.SAS.0.25 
+HLA1_chr6.SAS.0.25 \
+2
+```
+
+```
+------------------------------------
+Number of all population:  2504
+Number of AFR:  661
+Number of AMR:  347
+Number of EAS:  504
+Number of EUR:  502
+Number of SAS:  489
 ```

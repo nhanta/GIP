@@ -4,4 +4,10 @@ imputation_output/
 Obesity/
 1000GP_AF_chr6.vcf.gz
 1000GP_AF_chr6.vcf.gz.tbi
+1000GP_AF_chr6.vcf
 output
+target_imputation_multi_alleles_old.sh
+target_imputation_old.sh
+minimac4-4.1.6-Linux-x86_64.sh
+minimac4-4.1.6-Linux-x86_64
+Minimac4-4.1.6/

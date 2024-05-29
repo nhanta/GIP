@@ -14,9 +14,9 @@ parser.add_argument('num_al', metavar='n', type=int, help='Number of alleles')
 args = parser.parse_args()
 
 # Load original data and imputed data
-ori_data = pd.read_csv(args.ori_data, sep = "\t", header = None).to_numpy()
-missing_data = pd.read_csv(args.missing_data, sep = "\t", header = None).to_numpy()
-imputed_data = pd.read_csv(args.imputed_data, sep = "\t", header = None).to_numpy()
+ori_data = pd.read_csv(args.ori_data, sep = "\s+", header = None).to_numpy()
+missing_data = pd.read_csv(args.missing_data, sep = "\s+", header = None).to_numpy()
+imputed_data = pd.read_csv(args.imputed_data, sep = "\s+", header = None).to_numpy()
 
 # Load mask data
 if args.num_al == 2:

@@ -9,106 +9,8 @@ num_threads=$7
 
 mkdir ${output_dir}
 
-#bcftools convert --haplegendsample ${input_dir}/${file_name} ${input_dir}/${file_name}.vcf
-#bcftools convert --haplegendsample2vcf ${input_dir}/${file_name} > ${input_dir}/${file_name}.vcf
-
-# Convert multi allelic to bi allelic
-bcftools norm \
--m-any \
---check-ref \
--w \
--f ${ref_genome_dir} \
-${input_dir}/${file_name}.vcf \
--o ${output_dir}/${file_name}.snps.vcf
-
-# A comma-separated string of chrs to keep
-chrs=$(echo chr{1..22} chrX | tr ' ' ',')
-
-# Keep only those wanted chromosomes
-bcftools view -t $chrs ${output_dir}/${file_name}.snps.vcf \
-    -Oz -o ${output_dir}/${file_name}.chrfiltered.vcf.gz
-
-# Align the alleles to the reference genome, 
-# and keep only biallelic records
-bcftools norm -f ${ref_genome_dir} -c ws \
-    ${output_dir}/${file_name}.chrfiltered.vcf.gz -Ou | \
-bcftools view -m 2 -M 2 \
-    -Oz -o ${output_dir}/${file_name}.refcorrected.vcf.gz
-
-# Replace the ID column with a CHR_POS_REF_ALT
-bcftools annotate \
-    --set-id '%CHROM\_%POS\_%REF\_%ALT' \
-    ${output_dir}/${file_name}.refcorrected.vcf.gz \
-    -Oz -o ${output_dir}/${file_name}.SNPID.vcf.gz
-
-# Copy the panel sample ID file with 
-# a different name to the working directory
-cp ${ref_panel}/1000GP_sample_IDs.txt ${output_dir}/duplicate_sample_IDs.txt
-cp ${ref_panel}/1000GP_imputation_all.frq ${output_dir}
-
-# Generate a list of chip data sample IDs, 
-# keep only duplicates and 
-# append to the list of panel sample IDs
-bcftools query -l ${output_dir}/${file_name}.SNPID.vcf.gz | \
-    uniq -d >> ${output_dir}/duplicate_sample_IDs.txt
-
-# Exclude duplicate samples and MAC=0 variants, 
-# and update AF value after sample removals.
-# Finally, exclude duplicate variants
-bcftools view -S ^${output_dir}/duplicate_sample_IDs.txt \
-   --force-samples ${output_dir}/${file_name}.SNPID.vcf.gz -Ou | \
-#bcftools +fill-tags -Ou -- -t AC,AN,AF | \
-#bcftools norm -d none \
-    #-Oz -o  ${output_dir}/biallelic_noduplicate_variants.vcf.gz
-#Don't use bcftools norm for ref_pannel input to advoid removing all genotypes
-bcftools +fill-tags -Ou -- -t AC,AN,AF 
-cp ${output_dir}/${file_name}.SNPID.vcf.gz ${output_dir}/${file_name}.noduplicate.variants.vcf.gz
-# Remove low allele count variants 
-# (redundant if they are already removed)
-# we skip this step for considering rare variants
-: << 'COMMENT'
-bcftools view -e 'INFO/AC<3 | (INFO/AN-INFO/AC)<3' \
-    ${output_dir}/biallelic_noduplicate_variants.vcf.gz \
-    -Oz -o ${output_dir}/biallelic_AF.vcf.gz
-COMMENT
-
-# Generate a tab-delimited header
-echo -e 'CHR\tSNP\tREF\tALT\tAF' \
-    > ${output_dir}/chip.frq
-
-# Query the required fields from the VCF file 
-# and append to the allele frequency file
-bcftools query \
-    -f '%CHROM\t%ID\t%REF\t%ALT\t%INFO/AF\n' \
-    ${output_dir}/${file_name}.noduplicate.variants.vcf.gz \
-    >> ${output_dir}/chip.frq
-
-# Copy and save the given 'plot_AF.R' file and run it with:
-Rscript --no-save plot_AF.R \
-    ${output_dir}/chip.frq \
-    ${output_dir}/${file_name} \
-    ${output_dir}/1000GP_imputation_all.frq \
-    0.1 \
-    5 \
-    ${output_dir}
-
-
-# Sort the exclusion lists
-sort -V ${output_dir}/${file_name}_exclude.txt \
-    > ${output_dir}/${file_name}_exclusion1.txt
-sort -V ${output_dir}/${file_name}_nonpanel_exclude.txt \
-    > ${output_dir}/${file_name}_exclusion2.txt
-
-# Exclude the variants showing highly discrepant AF
-bcftools view -e ID=@${output_dir}/${file_name}_exclusion1.txt  \
-    ${output_dir}/${file_name}.noduplicate.variants.vcf.gz\
-    -Oz -o ${output_dir}/${file_name}.exclusion1.vcf.gz
-
-# Exclude the variants not present in the reference panel
-bcftools view -e ID=@${output_dir}/${file_name}_exclusion2.txt \
-    ${output_dir}/${file_name}.exclusion1.vcf.gz \
-    -Oz -o ${output_dir}/${file_name}.for_phasing.vcf.gz
-
+echo "Waiting for Beagle5.4"
+SECONDS=0
 # Phasing by Beagle
 for CHR in {1..23}; do 
     # Chromosome 23 is coded as 'chrX', 
@@ -121,7 +23,7 @@ for CHR in {1..23}; do
 
     # Run phasing for each chromosome separately
     beagle -Xmx96g \
-        gt=${output_dir}/${file_name}.for_phasing.vcf.gz \
+        gt=${input_dir}/${file_name}.vcf \
         ref=${ref_panel}/1000GP_AF_chr${CHR}.vcf.gz \
         map=${genetic_map}/beagle_chr${CHR}_b38.map \
         out=${output_dir}/${file_name}.phased.chr${CHR} impute=false gp=true \
@@ -165,48 +67,5 @@ rm ${inputed_files}
 # Sort SNPs
 bcftools sort ${output_dir}/${file_name}.combination.vcf -Oz -o ${output_dir}/${file_name}.imputed.beagle.vcf
 
-: << 'COMMENT'
-# List existing chromosomes
-chr=()
-while IFS= read -r line
-    do
-        chr+=($(($line)))
-    done < ${chr_names}
-rm ${chr_names}
-
-# Generate an allele frequency file for plotting for each chrs
-for CHR in ${chr}; do
-    # Generate a header for the output file
-    echo -e 'CHR\tSNP\tREF\tALT\tAF\tINFO\tAF_GROUP' \
-        > ${output_dir}/biallelic_group_chr${CHR}.txt
-
-    # Query the required fields and 
-    # add frequency group (1, 2 or 3) as the last column
-    bcftools query -f \
-        '%CHROM\t%CHROM\_%POS\_%REF\_%ALT\t%REF\t%ALT\t%INFO/AF\t%INFO/INFO\t-\n' \
-        ${output_dir}/biallelic_imputed_info_chr${CHR}.vcf.gz | \
-    # Here $5 refers to AF values, $7 refers to AF group
-    awk -v OFS="\t" \
-        '{if ($5>=0.05 && $5<=0.95) $7=1; \
-            else if(($5>=0.005 && $5<0.05) || \
-            ($5<=0.995 && $5>0.95)) $7=2; else $7=3} \
-            { print $1, $2, $3, $4, $5, $6, $7 }' \
-        >> ${output_dir}/biallelic_group_chr${CHR}.txt
-done
-
-# Copy and save the given 'plot_INFO_and_AF_for_imputed_chrs.R' file 
-# and run it with:
-for CHR in ${chr}; do
-    Rscript --no-save  \
-        plot_INFO_and_AF_for_imputed_chrs.R \
-        ${output_dir}/biallelic_group_chr${CHR}.txt \
-        ${output_dir}/biallelic_chr${CHR} \
-        ${output_dir}/1000GP_imputation_all.frq \
-        ${output_dir}
-done
-
-# Combine the plots per chromosome into a single pdf file
-convert $(ls ${output_dir}/_chr*.png | sort -V) \
-     ${output_dir}.pdf
-
-COMMENT
+duration=$SECONDS
+echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
