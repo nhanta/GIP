@@ -6,7 +6,7 @@ num_al=$3
 echo "GIP"
 if [[ ${num_al} == 2 ]]; then
     # Unzip imputed haplotype data
-    gunzip ${input_path}/output/${data_name}.missing.imputed.hap.gz
+    gunzip ${input_path}/output/${data_name}.missing.imputed.gip.hap.gz
 
     # Diplotype to haplotype
     bcftools convert --haplegendsample ${input_path}/${data_name}.ori  ${input_path}/${data_name}.ori.vcf
@@ -17,7 +17,7 @@ fi
 python gip/evaluation.py \
 ${input_path}/${data_name}.ori.hap \
 ${input_path}/${data_name}.missing.hap \
-${input_path}/output/${data_name}.missing.imputed.hap \
+${input_path}/output/${data_name}.missing.imputed.gip.hap \
 ${num_al}
 
 echo "BEAGLE5.4"

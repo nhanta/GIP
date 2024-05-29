@@ -18,20 +18,20 @@ if [[ ${num_al} == 2 ]]; then
     python3 gip/main.py --missing_data ${data_path}/${data_name}.hap \
     --method ${method} \
     --num_al ${num_al} \
-    --output_data ${output}/${data_name}.imputed.hap \
+    --output_data ${output}/${data_name}.imputed.${method}.hap \
     --batch_size 10 --hint_rate 0.9 --alpha 100 \
     --iterations 10000 \
     --num_threads ${num_threads}
 
     # Export imputed data
-    bgzip ${output}/${data_name}.imputed.hap
-    cp ${data_path}/${data_name}.samples  ${output}/${data_name}.imputed.samples
-    cp ${data_path}/${data_name}.legend.gz  ${output}/${data_name}.imputed.legend.gz
+    bgzip ${output}/${data_name}.imputed.gip.hap
+    cp ${data_path}/${data_name}.samples  ${output}/${data_name}.imputed.${method}.samples
+    cp ${data_path}/${data_name}.legend.gz  ${output}/${data_name}.imputed.${method}.legend.gz
 
-    bcftools convert --haplegendsample2vcf ${output}/${data_name}.imputed > ${output}/${data_name}.imputed.gip.vcf
+    bcftools convert --haplegendsample2vcf ${output}/${data_name}.imputed.${method} > ${output}/${data_name}.imputed.${method}.vcf
 else
     # Remove existing files
-    rm ${output}/${data_name}.imputed.hap
+    rm ${output}/${data_name}.imputed.${method}.hap
     rm ${data_path}/${data_name}.hap
     rm ${data_path}/${data_name:0:-7}ori.hap
 
@@ -42,7 +42,7 @@ else
     python3 gip/main.py --missing_data ${data_path}/${data_name}.hap \
     --method ${method} \
     --num_al ${num_al} \
-    --output_data ${output}/${data_name}.imputed.hap \
+    --output_data ${output}/${data_name}.imputed.${method}.hap \
     --batch_size 10 --hint_rate 0.9 --alpha 100 \
     --iterations 10000 \
     --num_threads ${num_threads}

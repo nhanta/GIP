@@ -88,6 +88,7 @@ def main (args):
 
     # Output the imputed diploid data
     im_data = pd.DataFrame(data = imputed_data_x.astype(int).astype(str), columns = list(range(2*len(ori_col))))
+    save_hap(im_data, output_data[0:-3] + "imputed." + method + ".hap")
     imputed_data_value = haploid_to_diploid(im_data).to_numpy()
     imputed_data = pd.DataFrame(data = imputed_data_value, columns = ori_col)
 
