@@ -1,0 +1,4090 @@
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AFR.0.02.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AFR.0.02.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:12
+
+Files:
+  * Input phased array  : [HLA1_chr6.AFR.0.02.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AFR.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.65s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1322]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=93.0 / mono=54.3% / %srd=1]	(0.24s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=661 / L=2383]	(0.17s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AFR.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AFR.0.05.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AFR.0.05.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:14
+
+Files:
+  * Input phased array  : [HLA1_chr6.AFR.0.05.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AFR.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.65s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.69s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1322]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=94.2 / mono=54.2% / %srd=1]	(0.23s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=661 / L=2383]	(0.17s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AFR.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AFR.0.1.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AFR.0.1.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:16
+
+Files:
+  * Input phased array  : [HLA1_chr6.AFR.0.1.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AFR.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.69s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1322]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=95.6 / mono=54.2% / %srd=2]	(0.24s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=661 / L=2383]	(0.17s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AFR.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AFR.0.25.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AFR.0.25.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:19
+
+Files:
+  * Input phased array  : [HLA1_chr6.AFR.0.25.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AFR.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1322]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.4 / mono=54.3% / %srd=5]	(0.25s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=661 / L=2383]	(0.17s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AFR.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AFR.0.2.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AFR.0.2.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:21
+
+Files:
+  * Input phased array  : [HLA1_chr6.AFR.0.2.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AFR.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.70s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1322]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.0 / mono=54.3% / %srd=4]	(0.24s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=661 / L=2383]	(0.17s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AFR.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.all.0.02.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.all.0.02.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:24
+
+Files:
+  * Input phased array  : [HLA1_chr6.all.0.02.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.all.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.71s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.76s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=5008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.06s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=92.1 / mono=54.4% / %srd=1]	(0.90s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=2504 / L=2383]	(0.81s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.all.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [3 seconds] (3s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.all.0.05.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.all.0.05.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:28
+
+Files:
+  * Input phased array  : [HLA1_chr6.all.0.05.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.all.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.69s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.76s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=5008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.06s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=93.9 / mono=54.3% / %srd=1]	(0.91s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=2504 / L=2383]	(0.76s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.all.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [3 seconds] (3s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.all.0.1.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.all.0.1.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:32
+
+Files:
+  * Input phased array  : [HLA1_chr6.all.0.1.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.all.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.71s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.76s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=5008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.06s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=95.6 / mono=54.3% / %srd=3]	(0.90s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=2504 / L=2383]	(0.74s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.all.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [3 seconds] (3s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.all.0.25.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.all.0.25.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:36
+
+Files:
+  * Input phased array  : [HLA1_chr6.all.0.25.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.all.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.76s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=5008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.06s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.6 / mono=54.3% / %srd=5]	(0.92s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=2504 / L=2383]	(0.74s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.all.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [3 seconds] (3s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.all.0.2.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.all.0.2.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:41
+
+Files:
+  * Input phased array  : [HLA1_chr6.all.0.2.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.all.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.75s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=5008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.06s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.2 / mono=54.3% / %srd=4]	(0.91s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=2504 / L=2383]	(0.67s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.all.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [3 seconds] (3s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AMR.0.02.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AMR.0.02.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:45
+
+Files:
+  * Input phased array  : [HLA1_chr6.AMR.0.02.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AMR.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.62s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.66s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=694]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.01s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=92.5 / mono=54.4% / %srd=1]	(0.12s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=347 / L=2383]	(0.09s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AMR.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AMR.0.05.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AMR.0.05.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:47
+
+Files:
+  * Input phased array  : [HLA1_chr6.AMR.0.05.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AMR.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=694]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.01s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=94.2 / mono=54.3% / %srd=2]	(0.12s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=347 / L=2383]	(0.09s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AMR.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AMR.0.1.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AMR.0.1.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:49
+
+Files:
+  * Input phased array  : [HLA1_chr6.AMR.0.1.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AMR.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.96s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.71s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.12s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=694]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.01s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=95.9 / mono=54.3% / %srd=3]	(0.14s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=347 / L=2383]	(0.09s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AMR.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [2 seconds] (2s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AMR.0.25.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AMR.0.25.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:51
+
+Files:
+  * Input phased array  : [HLA1_chr6.AMR.0.25.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AMR.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.70s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=694]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.01s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.8 / mono=54.3% / %srd=5]	(0.15s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=347 / L=2383]	(0.09s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AMR.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.AMR.0.2.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.AMR.0.2.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:53
+
+Files:
+  * Input phased array  : [HLA1_chr6.AMR.0.2.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.AMR.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.63s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=694]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.01s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.5 / mono=54.3% / %srd=4]	(0.12s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=347 / L=2383]	(0.10s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.AMR.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EAS.0.02.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EAS.0.02.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:55
+
+Files:
+  * Input phased array  : [HLA1_chr6.EAS.0.02.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EAS.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.69s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=91.1 / mono=54.4% / %srd=1]	(0.17s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=504 / L=2383]	(0.22s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EAS.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EAS.0.05.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EAS.0.05.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:44:58
+
+Files:
+  * Input phased array  : [HLA1_chr6.EAS.0.05.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EAS.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.65s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=93.3 / mono=54.3% / %srd=2]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=504 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EAS.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EAS.0.1.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EAS.0.1.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:00
+
+Files:
+  * Input phased array  : [HLA1_chr6.EAS.0.1.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EAS.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.66s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=95.2 / mono=54.3% / %srd=3]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=504 / L=2383]	(0.13s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EAS.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EAS.0.25.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EAS.0.25.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:02
+
+Files:
+  * Input phased array  : [HLA1_chr6.EAS.0.25.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EAS.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.63s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.4 / mono=54.3% / %srd=5]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=504 / L=2383]	(0.14s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EAS.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EAS.0.2.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EAS.0.2.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:04
+
+Files:
+  * Input phased array  : [HLA1_chr6.EAS.0.2.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EAS.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.69s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1008]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.0 / mono=54.3% / %srd=5]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=504 / L=2383]	(0.13s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EAS.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EUR.0.02.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EUR.0.02.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:06
+
+Files:
+  * Input phased array  : [HLA1_chr6.EUR.0.02.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EUR.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1004]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=92.5 / mono=54.5% / %srd=0]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=502 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EUR.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EUR.0.05.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EUR.0.05.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:09
+
+Files:
+  * Input phased array  : [HLA1_chr6.EUR.0.05.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EUR.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.65s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.11s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1004]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=94.2 / mono=54.4% / %srd=1]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=502 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EUR.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EUR.0.1.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EUR.0.1.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:11
+
+Files:
+  * Input phased array  : [HLA1_chr6.EUR.0.1.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EUR.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1004]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=95.9 / mono=54.4% / %srd=2]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=502 / L=2383]	(0.13s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EUR.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EUR.0.25.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EUR.0.25.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:13
+
+Files:
+  * Input phased array  : [HLA1_chr6.EUR.0.25.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EUR.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.66s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1004]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.8 / mono=54.4% / %srd=5]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=502 / L=2383]	(0.13s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EUR.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.EUR.0.2.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.EUR.0.2.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:15
+
+Files:
+  * Input phased array  : [HLA1_chr6.EUR.0.2.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.EUR.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.68s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=1004]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.4 / mono=54.4% / %srd=4]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=502 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.EUR.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.SAS.0.02.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.SAS.0.02.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:18
+
+Files:
+  * Input phased array  : [HLA1_chr6.SAS.0.02.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.SAS.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.63s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=978]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=91.0 / mono=54.4% / %srd=1]	(0.17s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=489 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.SAS.0.02.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.SAS.0.05.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.SAS.0.05.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:20
+
+Files:
+  * Input phased array  : [HLA1_chr6.SAS.0.05.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.SAS.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.63s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=978]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=93.0 / mono=54.4% / %srd=2]	(0.17s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=489 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.SAS.0.05.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.SAS.0.1.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.SAS.0.1.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:22
+
+Files:
+  * Input phased array  : [HLA1_chr6.SAS.0.1.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.SAS.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.63s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.67s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=978]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=95.0 / mono=54.4% / %srd=3]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=489 / L=2383]	(0.12s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.SAS.0.1.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.SAS.0.25.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.SAS.0.25.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:24
+
+Files:
+  * Input phased array  : [HLA1_chr6.SAS.0.25.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.SAS.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.64s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.71s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.09s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=978]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=97.3 / mono=54.4% / %srd=5]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=489 / L=2383]	(0.14s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.SAS.0.25.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+/home/pbthang/GIP/impute5_v1.2.0/impute5_v1.2.0_static --h /home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz --m /home/pbthang/GIP/imputation/genetic_map_for_imputation/shapeit4/chr6.b38.gmap.gz --g HLA1_chr6.SAS.0.2.missing.vcf.gz --r 6:292100-351355 --o HLA1_chr6.SAS.0.2.missing.vcf.imputed.vcf --buffer-region 6:0-400000
+
+[IMPUTE5] Imputation of phased SNP array data from large reference panels
+  * Authors             : Simone Rubinacci & Jonathan Marchini, 2023
+  * Contact             : rubinacci.simone@gmail.com
+  * Version       	: IMPUTE5 v1.2.0 / commit = 6e3d41e / release = 2023-08-21
+  * Citation	        : PLOS Genetics 16(11): e1009049 (2020). DOI: https://doi.org/10.1371/journal.pgen.1009049
+  * Licence	        : IMPUTE5 is freely available only for academic use. To see rules for non-academic use, please read the LICENCE.
+  * Run date            : 29/05/2024 - 14:45:26
+
+Files:
+  * Input phased array  : [HLA1_chr6.SAS.0.2.missing.vcf.gz]
+  * Reference panel     : [/home/pbthang/GIP/imputation/ref_panel/ALL.chr6_GRCh38.genotypes.20170504.vcf.gz]
+  * Output file         : [HLA1_chr6.SAS.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+IMPUTE5 parameters:
+  * Imputation model    : [Reference panel imputation]
+  * Input region        : [6:0-400000]
+  * Output region       : [6:292100-351355]
+  * Sparse MAF          : [0.03125]
+  * Recombination rates : [Given by genetic map]
+  * Ploidy              : [Only diploid samples in region]
+
+Model parameters:
+  * Ne [eff. pop. size] : [1000000]
+  * Imputation err. rate: [0.0001]
+
+Selection parameters:
+  * K pbwt              : [1500]
+  * PBWT max depth      : [10]
+  * PBWT min depth      : [2]
+  * PBWT modulo (cM)    : [0.02]
+
+Test statistics parameters:
+  * Surfbat test        : [NO]
+  * Surfbat MAF         : [0.01]
+  * Surfbat INFO        : [0.3]
+
+Output
+  * FORMAT/GT           : [YES]
+  * FORMAT/DS           : [YES]
+  * FORMAT/GP           : [YES]
+  * FORMAT/AP           : [NO]
+  * FORMAT/SAP          : [NO]
+  * Buffer              : [NO]
+  * CSI index           : [YES]
+
+Other parameters
+  * Seed                : [42]
+  * #Threads            : [1]
+
+Initialisation:
+  * XCF scanning	...
+  * XCF scanning	[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.65s)
+  * XCF parsing		[0%]
+  * XCF parsing		[10%]
+  * XCF parsing		[20%]
+  * XCF parsing		[30%]
+  * XCF parsing		[40%]
+  * XCF parsing		[50%]
+  * XCF parsing		[60%]
+  * XCF parsing		[70%]
+  * XCF parsing		[80%]
+  * XCF parsing		[90%]
+  * XCF parsing		[100%]
+  * XCF parsing		[done]		[Li=2383 | Lg= 1058 | Lt=0]	(0.69s)
+  * Common transpose	[ref]		[var2hap]			(0.00s)
+  * Rare transpose	[ref]		[var2hap]	[nrar=0.329273]	(0.00s)
+  * Genetic map		[n=233717]					(0.10s)
+  * cM interpolation	[s=62 / i=2321]				(0.00s)
+
+Samples statistics
+  * Reference panel 	[Nrh=5008]	[L=2383]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lr=1325]	[Lc=1058]
+  * Target panel 	[Nth=978]	[L=1058]	[Lb=0]
+    	Imputation reg.	[Lg=1058]	[Lt=0]
+
+Region statistics
+  * Buffer region 	[6:0-400000]
+  * Imputation region	[6:292100-351355]
+  * Region span   	[0.06 Mb]	[0.12 cM]
+
+PBWT state selection
+  * PBWT stats		[Div sel]	[n_stored=5]	...
+  * PBWT stats		[Div sel]	[n_stored=5]	[done]		(0.02s)
+  * Geno transpose	[ref]		[var2hap]			(0.00s)
+
+Imputing variants
+  * HMM imputation	[0%]
+  * HMM imputation	[10%]
+  * HMM imputation	[20%]
+  * HMM imputation	[30%]
+  * HMM imputation	[40%]
+  * HMM imputation	[50%]
+  * HMM imputation	[60%]
+  * HMM imputation	[70%]
+  * HMM imputation	[80%]
+  * HMM imputation	[90%]
+  * HMM imputation	[100%]
+  * HMM imputation	[done]	[#states=96.8 / mono=54.4% / %srd=5]	(0.18s)
+
+Finalization
+  * VCF writing		[0%]
+  * VCF writing		[10%]
+  * VCF writing		[20%]
+  * VCF writing		[30%]
+  * VCF writing		[40%]
+  * VCF writing		[50%]
+  * VCF writing		[60%]
+  * VCF writing		[70%]
+  * VCF writing		[80%]
+  * VCF writing		[90%]
+  * VCF writing		[100%]
+  * VCF writing 	[done]		[RAW  / N=489 / L=2383]	(0.13s)
+
+[33mWARNING: [0mPlain VCF file format with no compression as output: no CSI index can be created. Uncompressed VCF file format is strongly discouraged. Please use vcf.gz or bcf file format.
+
+  * Output file         : [HLA1_chr6.SAS.0.2.missing.vcf.imputed.vcf]
+  * Output format       : [VCF format | NO compression | with CSI index]
+
+[33mWARNING: [0mPlain VCF file format with no compression detected as output: this format is strongly discouraged as does not allow the creation of a CSI index, can create very large files. Please use a compressed file format if possible (vcf.gz, bcf).
+
+Total running time [1 second] (1s)
+
+
+Sample: HLA1_chr6.all.0.25
+Total allele: 5295570
+Missing allele: 1326002
+Change non-missing position in missing vcf: 0.00% (19)
+Different from original with missing position: 1.57% (83245)
+Create new position from original: 1325
+Accuracy Total: 98.43%
+Accuracy On Missing: 93.72%
+
+Sample: HLA1_chr6.all.0.05
+Total allele: 5295570
+Missing allele: 264994
+Change non-missing position in missing vcf: 0.00% (33)
+Different from original with missing position: 0.32% (16753)
+Create new position from original: 1325
+Accuracy Total: 99.68%
+Accuracy On Missing: 93.68%
+
+Sample: HLA1_chr6.EAS.0.1
+Total allele: 1067570
+Missing allele: 106960
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.62% (6627)
+Create new position from original: 1325
+Accuracy Total: 99.38%
+Accuracy On Missing: 93.80%
+
+Sample: HLA1_chr6.AFR.0.05
+Total allele: 1399468
+Missing allele: 69730
+Change non-missing position in missing vcf: 0.00% (29)
+Different from original with missing position: 0.33% (4652)
+Create new position from original: 1325
+Accuracy Total: 99.67%
+Accuracy On Missing: 93.33%
+
+Sample: HLA1_chr6.AMR.0.02
+Total allele: 735672
+Missing allele: 14552
+Change non-missing position in missing vcf: 0.00% (2)
+Different from original with missing position: 0.12% (878)
+Create new position from original: 1325
+Accuracy Total: 99.88%
+Accuracy On Missing: 93.97%
+
+Sample: HLA1_chr6.EUR.0.2
+Total allele: 1063342
+Missing allele: 213106
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 1.23% (13122)
+Create new position from original: 1325
+Accuracy Total: 98.77%
+Accuracy On Missing: 93.84%
+
+Sample: HLA1_chr6.EAS.0.2
+Total allele: 1067570
+Missing allele: 213984
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 1.24% (13241)
+Create new position from original: 1325
+Accuracy Total: 98.76%
+Accuracy On Missing: 93.81%
+
+Sample: HLA1_chr6.SAS.0.25
+Total allele: 1035860
+Missing allele: 259400
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 1.52% (15743)
+Create new position from original: 1325
+Accuracy Total: 98.48%
+Accuracy On Missing: 93.93%
+
+Sample: HLA1_chr6.all.0.1
+Total allele: 5295570
+Missing allele: 529690
+Change non-missing position in missing vcf: 0.00% (30)
+Different from original with missing position: 0.63% (33169)
+Create new position from original: 1325
+Accuracy Total: 99.37%
+Accuracy On Missing: 93.74%
+
+Sample: HLA1_chr6.EUR.0.02
+Total allele: 1063342
+Missing allele: 21100
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.12% (1273)
+Create new position from original: 1325
+Accuracy Total: 99.88%
+Accuracy On Missing: 93.97%
+
+Sample: HLA1_chr6.AMR.0.05
+Total allele: 735672
+Missing allele: 36614
+Change non-missing position in missing vcf: 0.00% (2)
+Different from original with missing position: 0.30% (2219)
+Create new position from original: 1325
+Accuracy Total: 99.70%
+Accuracy On Missing: 93.94%
+
+Sample: HLA1_chr6.all.0.2
+Total allele: 5295570
+Missing allele: 1060640
+Change non-missing position in missing vcf: 0.00% (24)
+Different from original with missing position: 1.26% (66603)
+Create new position from original: 1325
+Accuracy Total: 98.74%
+Accuracy On Missing: 93.72%
+
+Sample: HLA1_chr6.EAS.0.02
+Total allele: 1067570
+Missing allele: 21180
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.12% (1278)
+Create new position from original: 1325
+Accuracy Total: 99.88%
+Accuracy On Missing: 93.97%
+
+Sample: HLA1_chr6.EUR.0.05
+Total allele: 1063342
+Missing allele: 53144
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.30% (3181)
+Create new position from original: 1325
+Accuracy Total: 99.70%
+Accuracy On Missing: 94.01%
+
+Sample: HLA1_chr6.AMR.0.2
+Total allele: 735672
+Missing allele: 147522
+Change non-missing position in missing vcf: 0.00% (1)
+Different from original with missing position: 1.24% (9100)
+Create new position from original: 1325
+Accuracy Total: 98.76%
+Accuracy On Missing: 93.83%
+
+Sample: HLA1_chr6.all.0.02
+Total allele: 5295570
+Missing allele: 105904
+Change non-missing position in missing vcf: 0.00% (34)
+Different from original with missing position: 0.13% (6738)
+Create new position from original: 1325
+Accuracy Total: 99.87%
+Accuracy On Missing: 93.64%
+
+Sample: HLA1_chr6.AMR.0.25
+Total allele: 735672
+Missing allele: 184310
+Change non-missing position in missing vcf: 0.00% (1)
+Different from original with missing position: 1.55% (11397)
+Create new position from original: 1325
+Accuracy Total: 98.45%
+Accuracy On Missing: 93.82%
+
+Sample: HLA1_chr6.EAS.0.25
+Total allele: 1067570
+Missing allele: 267282
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 1.57% (16728)
+Create new position from original: 1325
+Accuracy Total: 98.43%
+Accuracy On Missing: 93.74%
+
+Sample: HLA1_chr6.EAS.0.05
+Total allele: 1067570
+Missing allele: 53378
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.31% (3269)
+Create new position from original: 1325
+Accuracy Total: 99.69%
+Accuracy On Missing: 93.88%
+
+Sample: HLA1_chr6.SAS.0.05
+Total allele: 1035860
+Missing allele: 51768
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.31% (3183)
+Create new position from original: 1325
+Accuracy Total: 99.69%
+Accuracy On Missing: 93.85%
+
+Sample: HLA1_chr6.EUR.0.25
+Total allele: 1063342
+Missing allele: 266214
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 1.54% (16332)
+Create new position from original: 1325
+Accuracy Total: 98.46%
+Accuracy On Missing: 93.87%
+
+Sample: HLA1_chr6.SAS.0.2
+Total allele: 1035860
+Missing allele: 207688
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 1.22% (12603)
+Create new position from original: 1325
+Accuracy Total: 98.78%
+Accuracy On Missing: 93.93%
+
+Sample: HLA1_chr6.EUR.0.1
+Total allele: 1063342
+Missing allele: 106544
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.61% (6510)
+Create new position from original: 1325
+Accuracy Total: 99.39%
+Accuracy On Missing: 93.89%
+
+Sample: HLA1_chr6.SAS.0.02
+Total allele: 1035860
+Missing allele: 20610
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.13% (1299)
+Create new position from original: 1325
+Accuracy Total: 99.87%
+Accuracy On Missing: 93.70%
+
+Sample: HLA1_chr6.AMR.0.1
+Total allele: 735672
+Missing allele: 73778
+Change non-missing position in missing vcf: 0.00% (2)
+Different from original with missing position: 0.62% (4525)
+Create new position from original: 1325
+Accuracy Total: 99.38%
+Accuracy On Missing: 93.87%
+
+Sample: HLA1_chr6.AFR.0.2
+Total allele: 1399468
+Missing allele: 280148
+Change non-missing position in missing vcf: 0.00% (20)
+Different from original with missing position: 1.34% (18705)
+Create new position from original: 1325
+Accuracy Total: 98.66%
+Accuracy On Missing: 93.32%
+
+Sample: HLA1_chr6.AFR.0.1
+Total allele: 1399468
+Missing allele: 139878
+Change non-missing position in missing vcf: 0.00% (27)
+Different from original with missing position: 0.68% (9482)
+Create new position from original: 1325
+Accuracy Total: 99.32%
+Accuracy On Missing: 93.22%
+
+Sample: HLA1_chr6.AFR.0.02
+Total allele: 1399468
+Missing allele: 27698
+Change non-missing position in missing vcf: 0.00% (30)
+Different from original with missing position: 0.13% (1830)
+Create new position from original: 1325
+Accuracy Total: 99.87%
+Accuracy On Missing: 93.39%
+
+Sample: HLA1_chr6.SAS.0.1
+Total allele: 1035860
+Missing allele: 103774
+Change non-missing position in missing vcf: 0.00% (0)
+Different from original with missing position: 0.62% (6390)
+Create new position from original: 1325
+Accuracy Total: 99.38%
+Accuracy On Missing: 93.84%
+
+Sample: HLA1_chr6.AFR.0.25
+Total allele: 1399468
+Missing allele: 349704
+Change non-missing position in missing vcf: 0.00% (19)
+Different from original with missing position: 1.67% (23316)
+Create new position from original: 1325
+Accuracy Total: 98.33%
+Accuracy On Missing: 93.33%
+
+Total: 30 samples
+Total position: 52987410
+Missing allele: 6577296
+Change non-missing position in missing vcf: 0.00% (273)
+Different from original with missing position: 0.78% (413391)
+Create new position from original: 39750
+Accuracy Total: 99.22%
+Accuracy On Missing: 93.71%
