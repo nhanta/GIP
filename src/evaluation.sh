@@ -32,3 +32,10 @@ ${input_path}/${data_name}.ori.hap \
 ${input_path}/${data_name}.missing.hap \
 ${input_path}/output/${data_name}.missing.imputed.beagle.hap \
 ${num_al}
+
+echo "MINIMAC4"
+python gip/evaluation.py \
+${input_path}/${data_name}.ori.hap \
+${input_path}/${data_name}.missing.hap \
+${input_path}/output/${data_name}.missing.imputed.minimac.hap \
+${num_al}

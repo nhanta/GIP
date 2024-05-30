@@ -313,3 +313,25 @@ def haploid_to_diploid(df):
     merged_df = pd.DataFrame(merged_columns).T
 
     return(merged_df)
+
+# Convert diploid to haploid for minimac
+def diploid_to_haploid_minimac(data):    
+# Define the columns to split and the separator
+    columns_to_split = data.columns
+    df = pd.DataFrame()
+ 
+    # Split the specified columns
+    for col in columns_to_split:
+        try:
+            # Split the column into multiple columns
+            split_cols = data[col].str.split(',', expand=True)
+        except:
+            print("error: can not split columns")
+
+        # Rename the split columns to avoid name clashes
+        split_cols.columns = [f"{col}_{i+1}" for i in range(split_cols.shape[1])]
+        
+        # Concatenate the split columns back to the original DataFrame
+        df = pd.concat([df, split_cols], axis=1)
+        
+    return(df)
