@@ -19,6 +19,7 @@ ${input_dir}/${file_name}.vcf.gz \
 -o ${output_dir}/${file_name}.imputed.minimac.vcf \
 -r ${region} \
 -m ${genetic_map} \
+-f GT \
 -t 70 
 duration=$SECONDS
 echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."

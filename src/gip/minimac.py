@@ -1,5 +1,5 @@
 import pandas as pd
-from utils import read_vcf, save_hap, diploid_to_haploid_minimac
+from utils import read_vcf, save_hap, diploid_to_haploid
 import argparse
 
 parser = argparse.ArgumentParser(
@@ -31,4 +31,4 @@ print(imp_data)
 im_data = read_vcf(args.imputed_data)
 
 # Convert imputed data to haploid data
-save_hap(diploid_to_haploid_minimac(im_data.iloc[:, 9::]).to_numpy(), args.output_data)
+save_hap(diploid_to_haploid(im_data.iloc[:, 9::]).to_numpy(), args.output_data)
