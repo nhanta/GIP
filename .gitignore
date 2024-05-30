@@ -1,8 +1,11 @@
 command
+data/
 references/
 imputation_output/
 Obesity/
+impute5_changing/
 1000GP_AF_chr6.vcf.gz
 1000GP_AF_chr6.vcf.gz.tbi
+Minimac4-4.1.6/
 .idea
 .vscode
