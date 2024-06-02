@@ -10,10 +10,16 @@ output=${data_path}/output
 mkdir ${output}
 
 if [[ ${num_al} == 2 ]]; then
+    # Remove existing files
+    rm ${output}/${data_name}.imputed.${method}.hap
+    rm ${data_path}/${data_name}.hap
+    rm ${data_path}/${data_name:0:-7}ori.hap
     # Diplotype to haplotype
     bcftools convert --haplegendsample ${data_path}/$data_name ${data_path}/${data_name}.vcf
-    gunzip ${data_path}/${data_name}.hap.gz
+    gunzip -f ${data_path}/${data_name}.hap.gz
 
+    log=$(readlink -f ${data_name}.log.txt)
+    SECONDS=0
     # Run imputation 
     python3 gip/main.py --missing_data ${data_path}/${data_name}.hap \
     --method ${method} \
@@ -23,8 +29,13 @@ if [[ ${num_al} == 2 ]]; then
     --iterations 10000 \
     --num_threads ${num_threads}
 
+    duration=$SECONDS
+    echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
+    echo "Sample: ${data_name}" >> $log
+    echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed." >> $log
+
     # Export imputed data
-    bgzip ${output}/${data_name}.imputed.gip.hap
+    bgzip -f ${output}/${data_name}.imputed.${method}.hap
     cp ${data_path}/${data_name}.samples  ${output}/${data_name}.imputed.${method}.samples
     cp ${data_path}/${data_name}.legend.gz  ${output}/${data_name}.imputed.${method}.legend.gz
 
@@ -38,6 +49,8 @@ else
     # Generate header
     cat ${data_path}/$data_name.vcf | grep '^##' > ${data_path}/$data_name.header.txt
 
+    log=$(readlink -f ${data_name}.log.txt)
+    SECONDS=0
     # Run imputation 
     python3 gip/main.py --missing_data ${data_path}/${data_name}.hap \
     --method ${method} \
@@ -46,6 +59,11 @@ else
     --batch_size 10 --hint_rate 0.9 --alpha 100 \
     --iterations 10000 \
     --num_threads ${num_threads}
+    
+    duration=$SECONDS
+    echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
+    echo "Sample: ${data_name}" >> $log
+    echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed." >> $log
 fi
 
 

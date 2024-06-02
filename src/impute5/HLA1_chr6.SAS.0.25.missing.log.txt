@@ -1,0 +1,4 @@
+
+../impute5_v1.2.0/impute5_v1.2.0_static --h /work/users/minhnth/obesity/imputation/ref_panel_multi_allele/1000GP_AF_chr6.vcf.gz --m /work/users/minhnth/obesity/imputation/genetic_map_for_imputation/chr6.b38.gmap.gz --g ../../data/HLA_3_alleles//HLA1_chr6.SAS.0.25.missing.ip5.vcf.gz --r chr6:292100-351355 --o ../../data/HLA_3_alleles//HLA1_chr6.SAS.0.25.missing.imputed.ip5.vcf --buffer-region chr6:292100-351355
+Sample: HLA1_chr6.SAS.0.25.missing
+0 minutes and 3 seconds elapsed.

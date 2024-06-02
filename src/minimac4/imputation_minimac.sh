@@ -7,10 +7,13 @@ region=$5 # chr6:292100-351355
 genetic_map=$6
 num_threads=$7
 
-bgzip -c ${input_dir}/${file_name}.vcf > ${input_dir}/${file_name}.vcf.gz
+bgzip -fc ${input_dir}/${file_name}.vcf > ${input_dir}/${file_name}.vcf.gz
 tabix -p vcf ${input_dir}/${file_name}.vcf.gz
 
 echo "Waiting for Minimac4"
+
+echo "" > ${file_name}.log.txt
+log=$(readlink -f ${file_name}.log.txt)
 
 SECONDS=0
 # Run minimac4
@@ -24,7 +27,13 @@ ${input_dir}/${file_name}.vcf.gz \
 duration=$SECONDS
 echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
 
+echo "Sample: ${file_name}" >> $log
+echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed." >> $log
+
 # Get haploid data from minimac4's result
-python ../gip/minimac.py \
+python ../gip/vcf2hap.py \
+${input_dir}/${file_name:0:-7}ori.vcf \
+${input_dir}/${file_name}.vcf \
 ${output_dir}/${file_name}.imputed.minimac.vcf \
-${output_dir}/${file_name}.imputed.minimac.hap 
+${output_dir}/${file_name}.imputed.minimac.hap \
+minimac

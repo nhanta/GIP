@@ -6,11 +6,11 @@ num_al=$3
 echo "GIP"
 if [[ ${num_al} == 2 ]]; then
     # Unzip imputed haplotype data
-    gunzip ${input_path}/output/${data_name}.missing.imputed.gip.hap.gz
+    gunzip -f ${input_path}/output/${data_name}.missing.imputed.gip.hap.gz
 
     # Diplotype to haplotype
     bcftools convert --haplegendsample ${input_path}/${data_name}.ori  ${input_path}/${data_name}.ori.vcf
-    gunzip ${input_path}/${data_name}.ori.hap.gz
+    gunzip -f ${input_path}/${data_name}.ori.hap.gz
 fi
 
 # Evaluate gip
@@ -33,9 +33,18 @@ ${input_path}/${data_name}.missing.hap \
 ${input_path}/output/${data_name}.missing.imputed.beagle.hap \
 ${num_al}
 
+echo ""
 echo "MINIMAC4"
 python gip/evaluation.py \
 ${input_path}/${data_name}.ori.hap \
 ${input_path}/${data_name}.missing.hap \
 ${input_path}/output/${data_name}.missing.imputed.minimac.hap \
+${num_al}
+
+echo ""
+echo "IMPUTE5"
+python gip/evaluation.py \
+${input_path}/${data_name}.ori.ip5.hap \
+${input_path}/${data_name}.missing.ip5.hap \
+${input_path}/output/${data_name}.missing.imputed.ip5.hap \
 ${num_al}

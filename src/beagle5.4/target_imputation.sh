@@ -7,9 +7,10 @@ ref_panel=$5
 genetic_map=$6
 num_threads=$7
 
-mkdir ${output_dir}
+mkdir -p ${output_dir}
 
 echo "Waiting for Beagle5.4"
+log=$(readlink -f ${file_name}.log.txt)
 SECONDS=0
 # Phasing by Beagle
 for CHR in {1..23}; do 
@@ -69,3 +70,5 @@ bcftools sort ${output_dir}/${file_name}.combination.vcf -Oz -o ${output_dir}/${
 
 duration=$SECONDS
 echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
+echo "Sample: ${file_name}" >> $log
+echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed." >> $log
