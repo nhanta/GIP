@@ -31,7 +31,7 @@ echo "Sample: ${file_name}" >> $log
 echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed." >> $log
 
 # Get haploid data from minimac4's result
-python ../gip/vcf2hap.py \
+python gip/vcf2hap.py \
 ${input_dir}/${file_name:0:-7}ori.vcf \
 ${input_dir}/${file_name}.vcf \
 ${output_dir}/${file_name}.imputed.minimac.vcf \

@@ -57,7 +57,7 @@ bcftools annotate -x ^FORMAT/GT ${output_dir}/${file_name}.imputed.ip5.info.vcf 
 #python impute_evaluate.py >> $log
 echo "Saving ..."
 # Get haploid data from Impute5's result
-python ../gip/vcf2hap.py \
+python gip/vcf2hap.py \
 ${input_dir}/${file_name:0:-7}ori.vcf \
 ${input_dir}/${file_name}.vcf \
 ${output_dir}/${file_name}.imputed.ip5.vcf \

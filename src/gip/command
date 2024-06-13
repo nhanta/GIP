@@ -70,6 +70,27 @@ bash evaluation.sh \
 HLA1_chr6.SAS.0.25 \
 2
 
+bash training.sh \
+/work/users/minhnth/gatk/hg38.fasta \
+/work/users/minhnth/obesity/imputation/ref_panel/ \
+../data/HLA/ \
+HLA1_chr6 \
+chr6:292100-351355 \
+/work/users/minhnth/obesity/imputation/genetic_map_for_imputation/ \
+70 \
+2
+
+# Evaluation for 2 alleles
+bash eval.sh \
+../data/HLA/ \
+HLA1_chr6 \
+2
+
+bash eval.sh \
+../data/HLA_3_alleles/ \
+HLA1_chr6 \
+3
+
 ------------------------------------
 Number of all population:  2504
 Number of AFR:  661
@@ -118,5 +139,46 @@ chr6:292100-351355 \
 /work/users/minhnth/obesity/imputation/genetic_map_for_imputation/chr6.b38.gmap.gz \
 70 \
 ../impute5_v1.2.0/impute5_v1.2.0_static
+
+
+-----------------------------------------
+# Assuming you have a VCF file named chr1_variants.vcf
+# Using bcftools to filter multi-allelic variants
+
+# CHROMOSOME 1p36 DELETION SYNDROME, DISTAL
+bcftools view -r chr1:1-10000000 /work/users/minhnth/obesity/imputation/ref_panel_multi_allele/1000GP_AF_chr1.vcf.gz \
+> ../data/Chr1_DS/Chr1_DS.vcf
+
+cat ../data/Chr1_DS/Chr1_DS.vcf | grep '^##' > ../data/Chr1_DS/Chr1_DS.txt
+
+python data_preparation_multi_alleles.py \
+../../data/Chr1_DS/ \
+Chr1_DS
+
+# Extract AN,AC values from an existing VCF, such 1000Genomes
+bcftools query -f'%CHROM\t%AN\t%AC\n' ../data/Chr1_DS/Chr1_DS.vcf \
+> ../data/Chr1_DS/AC_AN.vcf
+
+cat ../data/Chr1_DS/Chr1_DS.vcf | grep -oE "([0-10]/[0-10])"| sort | uniq -c
+
+
+bash training_multi_alleles.sh \
+/work/users/minhnth/gatk/hg38.fasta \
+/work/users/minhnth/obesity/imputation/ref_panel_multi_allele/ \
+../data/Chr1_DS/ \
+Chr1_DS \
+chr1:1-10000000 \
+/work/users/minhnth/obesity/imputation/genetic_map_for_imputation/ \
+70 \
+5
+
+minimac4 --compress-reference /work/users/minhnth/obesity/imputation/ref_panel_multi_allele/1000GP_AF_chr1.vcf.gz \
+ > /work/users/minhnth/obesity/imputation/ref_panel_multi_allele/1000GP_AF_chr1.msav
+
+bash eval_multi_alleles.sh \
+../data/Chr1_5_alleles/ \
+Chr1_5_alleles \
+5
+
 
 

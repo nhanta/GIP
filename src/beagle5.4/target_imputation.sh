@@ -22,13 +22,13 @@ for CHR in {1..23}; do
           chrname=$CHR
     fi
 
-    # Run phasing for each chromosome separately
+    # Run imputation for each chromosome separately
     beagle -Xmx96g \
         gt=${input_dir}/${file_name}.vcf \
         ref=${ref_panel}/1000GP_AF_chr${CHR}.vcf.gz \
         map=${genetic_map}/beagle_chr${CHR}_b38.map \
         out=${output_dir}/${file_name}.phased.chr${CHR} impute=false gp=true \
-        nthreads=${num_threads} window=500.0 chrom=chr${chrname} \
+        nthreads=${num_threads} window=500.0 chrom=chr${chrname} 
 	    iterations=20 ne=20000 seed=-99999 
 	
 done
@@ -64,7 +64,7 @@ done
 
 bcftools concat -f ${inputed_files} -Oz -o ${output_dir}/${file_name}.combination.vcf
 rm ${inputed_files}
-
+rm ${chr_names}
 # Sort SNPs
 bcftools sort ${output_dir}/${file_name}.combination.vcf -Oz -o ${output_dir}/${file_name}.imputed.beagle.vcf
 

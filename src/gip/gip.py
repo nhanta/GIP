@@ -42,14 +42,14 @@ def round(x):
 def g(X, Y, num_al, N):
   alpha, beta = prob(num_al, N)
   # Define a function to compute prob(h_{k+1}|h_1,...,h_k) values for each row pair
-  def compute_prob_k(X, y):
+  def compute_prob_k(X, y, num_al):
       # Compute intermediate values for the current row of X and all rows of Y
-      prob_k = alpha + beta - tf.multiply(alpha, round(tf.abs(y - X)))
+      prob_k = alpha + beta - tf.multiply(alpha + (2-num_al)*beta, round(tf.abs(y - X)))
       
       return tf.reduce_sum(prob_k, 0)
 
   # Use tf.map_fn to apply the function to each row of X and Y
-  pr = tf.map_fn(lambda y: compute_prob_k(X, y), Y, dtype=tf.float32)
+  pr = tf.map_fn(lambda y: compute_prob_k(X, y, num_al), Y, dtype=tf.float32)
 
   return pr
   

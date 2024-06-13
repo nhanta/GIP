@@ -1,3 +1,0 @@
-
-Sample: HLA1_chr6.SAS.0.25.missing
-0 minutes and 0 seconds elapsed.

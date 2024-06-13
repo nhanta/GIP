@@ -8,10 +8,10 @@ genetic_map=$6
 num_threads=$7
 num_als=$8
 
-for rate in 0.02 0.05 0.1 0.2 0.25; do
-    for p in 'all' 'AFR' 'AMR' 'EAS' 'EUR' 'SAS'; do
+for rate in 0.1 0.2 0.3; do
+    for p in 'all'; do
         file_name=${prefix_name}.${p}.${rate}.missing
-
+: << 'COMMENT'
         echo "Run GIP"
         bash gip.sh \
         ${input_dir} \
@@ -19,7 +19,7 @@ for rate in 0.02 0.05 0.1 0.2 0.25; do
         gip \
         ${num_als} \
         ${num_threads}
-: << 'COMMENT'
+
         echo "Run GAIN"
         bash gip.sh \
         ${input_dir} \
@@ -37,18 +37,17 @@ for rate in 0.02 0.05 0.1 0.2 0.25; do
         ${ref_panel} \
         ${genetic_map} \
         ${num_threads}
-# COMMENT
-
+COMMENT
         echo "Run Minimac4"
         bash minimac4/imputation_minimac.sh \
-        ${ref_panel}/1000GP_AF_chr6.msav \
+        ${ref_panel}/1000GP_AF_chr1.msav \
         ${input_dir} \
         ${file_name} \
         ${input_dir}/output/ \
         ${region} \
-        ${genetic_map}/beagle_chr6_b38.map \
+        ${genetic_map}/beagle_chr1_b38.map \
         ${num_threads}
-# : << 'COMMENT'
+: << 'COMMENT'
         echo "Run Impute5"
 
         bash impute5/impute.sh \
