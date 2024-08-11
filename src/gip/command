@@ -9,6 +9,10 @@ bash panel_multi_allele_preparation.sh \
 tabix -p vcf 1000GP_AF_chr6.vcf.gz
 bcftools view -R HLA1_chr6.bed 1000GP_AF_chr6.vcf.gz > HLA1_chr6.vcf
 
+bcftools view -r chr6:0-5000000 1000GP_AF_chr6.vcf.gz > chr6_5m.vcf
+bcftools convert --haplegendsample chr6_5m chr6_5m.vcf
+gunzip -f chr6_5m.hap.gz
+
 # Prepare header
 cat HLA1_chr6.vcf | grep '^##' > HLA1.header.txt
 
@@ -176,8 +180,8 @@ minimac4 --compress-reference /work/users/minhnth/obesity/imputation/ref_panel_m
  > /work/users/minhnth/obesity/imputation/ref_panel_multi_allele/1000GP_AF_chr1.msav
 
 bash eval_multi_alleles.sh \
-../data/Chr1_5_alleles/ \
-Chr1_5_alleles \
+../data/Chr1_DS/ \
+Chr1_DS \
 5
 
 

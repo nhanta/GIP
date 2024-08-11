@@ -24,7 +24,7 @@ import argparse
 import numpy as np
 import pandas as pd
 
-from gip import imputation
+from GIP.src.gip.gip_old import imputation
 from utils import save_hap, read_vcf, save_vcf, diploid_to_haploid, haploid_to_diploid
 
 def main (args):

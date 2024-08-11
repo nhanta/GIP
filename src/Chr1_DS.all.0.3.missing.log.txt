@@ -1,0 +1,3 @@
+
+Sample: Chr1_DS.all.0.3.missing
+4 minutes and 51 seconds elapsed.

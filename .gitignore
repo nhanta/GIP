@@ -1,7 +1,10 @@
-command
+commandos
+log/
+data/
 references/
 imputation_output/
 Obesity/
+impute5_changing/
 1000GP_AF_chr6.vcf.gz
 1000GP_AF_chr6.vcf.gz.tbi
 1000GP_AF_chr6.vcf
@@ -11,3 +14,7 @@ target_imputation_old.sh
 minimac4-4.1.6-Linux-x86_64.sh
 minimac4-4.1.6-Linux-x86_64
 Minimac4-4.1.6/
+impute5_v1.2.0/
+impute_evaluate_single.ipynb
+impute_evaluate.py
+__pycache__/
