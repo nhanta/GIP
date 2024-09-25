@@ -85,14 +85,26 @@ HLA1_chr6.SAS.0.25.missing \
 70
 ```
 # Imputation by GIP
+With CPUs:
 ```
 bash gip.sh \
-../data/HLA \
-HLA1_chr6.SAS.0.25.missing \
-gip \
-2 \
-70 
+-data_path ../data/HLA \
+-data_name HLA1_chr6.SAS.0.25.missing \
+-method gip \
+-num_al 2 \
+-num_cpus 70 
 ```
+
+With GPUs:
+```
+bash gip.sh \
+-data_path ../data/HLA \
+-data_name HLA1_chr6.SAS.0.25.missing \
+-method gip \
+-num_al 2 \
+-num_gpus 2 
+```
+
 # Evaluation for GIP and Beagle 5.4
 ```
 bash evaluation.sh \
