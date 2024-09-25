@@ -97,12 +97,11 @@ class GIP:
     def impute(self, method):
         ncpu = self.system_parameters['num_cpus']
         ngpu = self.system_parameters['num_gpus']
-
+        device = torch.device('cuda' if ngpu > 0 and torch.cuda.is_available() else 'cpu')
         # Set the number of threads for parallelism in PyTorch
-        torch.set_num_threads(ncpu)
+        if ncpu: torch.set_num_threads(ncpu)
 
         # Check for available GPUs and set device
-        device = torch.device('cuda' if ngpu > 0 and torch.cuda.is_available() else 'cpu')
         print(f"Using device: {device}")
 
         # Mask matrix indicating observed (1) and missing (0) values

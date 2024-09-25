@@ -55,7 +55,7 @@ def main (args):
                      'num_alleles': args.num_alleles
                      }
   system_parameters = {'num_cpus': args.num_cpus,
-                       'num_gpus': args.num_cpus
+                       'num_gpus': args.num_gpus
                      }
   if num_alleles == 2:
     # Load missing data

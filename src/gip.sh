@@ -60,7 +60,8 @@ if [[ ${num_al} == 2 ]]; then
     --output_data ${output}/${data_name}.imputed.${method}.hap \
     --batch_size 10 --hint_rate 0.9 --alpha 100 \
     --iterations 10000 \
-    --num_cpus ${num_cpus}
+    --num_cpus ${num_cpus} \
+    --num_gpus ${num_gpus}
 
     duration=$SECONDS
     echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
@@ -91,7 +92,8 @@ else
     --output_data ${output}/${data_name}.imputed.${method}.hap \
     --batch_size 10 --hint_rate 0.9 --alpha 100 \
     --iterations 10000 \
-    --num_cpus ${num_cpus}
+    --num_cpus ${num_cpus} \
+    --num_gpus ${num_gpus}
     
     duration=$SECONDS
     echo "$((duration / 60)) minutes and $((duration % 60)) seconds elapsed."
