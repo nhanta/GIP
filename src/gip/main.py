@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-'''Main function for UCI letter and spam datasets.
+'''Main function for the 1000 Genomes Project (1KGP) phase 3.
 '''
 
 # Necessary packages
@@ -24,11 +24,11 @@ import argparse
 import numpy as np
 import pandas as pd
 
-from GIP.src.gip.gip_old import imputation
+from gip import GIP
 from utils import save_hap, read_vcf, save_vcf, diploid_to_haploid, haploid_to_diploid
 
 def main (args):
-  '''Main function for UCI letter and spam datasets.
+  '''Main function for the 1KGP phase 3.
   
   Args:
     - data_name: letter or spam
@@ -46,14 +46,18 @@ def main (args):
   method = args.method
   missing_data = args.missing_data
   output_data = args.output_data
-  num_al = args.num_al
-  num_threads = args.num_threads
+  num_alleles = args.num_alleles
   
-  gain_parameters = {'batch_size': args.batch_size,
+  gip_parameters = {'batch_size': args.batch_size,
                      'hint_rate': args.hint_rate,
                      'alpha': args.alpha,
-                     'iterations': args.iterations}
-  if num_al == 2:
+                     'iterations': args.iterations,
+                     'num_alleles': args.num_alleles
+                     }
+  system_parameters = {'num_cpus': args.num_cpus,
+                       'num_gpus': args.num_cpus
+                     }
+  if num_alleles == 2:
     # Load missing data
     miss_data_x = pd.read_csv(missing_data, header = None, sep = " ").to_numpy()
     data_m = miss_data_x == "?"
@@ -72,11 +76,11 @@ def main (args):
   miss_data_x[data_m] = np.nan
   miss_data_x = miss_data_x.astype(float)
   # Impute missing data
-  imputed_data_x = imputation(miss_data_x, gain_parameters, num_al).impute(method, num_threads)
+  imputed_data_x = GIP(miss_data_x, gip_parameters, system_parameters).impute(method)
   
   save_hap(imputed_data_x.astype(int).astype(str), output_data)
 
-  if num_al != 2:
+  if num_alleles != 2:
     ori_data = read_vcf(missing_data[0:-11] + "ori.vcf")
     ori_geno = ori_data.iloc[:, 9::]
     ori_col = geno.columns
@@ -85,7 +89,7 @@ def main (args):
     # Convert diploid to haploid for original data
     ori_hap = diploid_to_haploid(ori_geno).to_numpy()
     save_hap(ori_hap, missing_data[0:-11] + "ori.hap")
-
+    print("Save the original haplotype to the path: ", missing_data[0:-11] + "ori.hap")
     # Output the imputed diploid data
     im_data = pd.DataFrame(data = imputed_data_x.astype(int).astype(str), columns = list(range(2*len(ori_col))))
     imputed_data_value = haploid_to_diploid(im_data).to_numpy()
@@ -118,7 +122,7 @@ if __name__ == '__main__':
       default='gip',
       type=str)
   parser.add_argument(
-      '--num_al',
+      '--num_alleles',
       help='number of alleles',
       default=int,
       type=int)
@@ -143,11 +147,16 @@ if __name__ == '__main__':
       default=10000,
       type=int)
   parser.add_argument(
-      '--num_threads',
-      help='number of training interations',
-      default=20,
+      '--num_cpus',
+      help='number of cpus',
+      default=2,
       type=int)
-  
+  parser.add_argument(
+      '--num_gpus',
+      help='number of gpus',
+      default=0,
+      type=int)
+
   args = parser.parse_args() 
   
   # Calls main function  

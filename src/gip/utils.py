@@ -72,8 +72,8 @@ def normalization (data, parameters=None):
     
     # For each dimension
     for i in range(dim):
-      norm_data[:,i] = norm_data[:,i] - min_val[i]
-      norm_data[:,i] = norm_data[:,i] / (max_val[i] + 1e-6)  
+      norm_data[:,i] = norm_data[:,i] - min_val
+      norm_data[:,i] = norm_data[:,i] / (max_val + 1e-6)  
       
     norm_parameters = parameters    
       
@@ -96,10 +96,14 @@ def renormalization (norm_data, norm_parameters):
 
   _, dim = norm_data.shape
   renorm_data = norm_data.copy()
-    
-  for i in range(dim):
-    renorm_data[:,i] = renorm_data[:,i] * (max_val[i] + 1e-6)   
-    renorm_data[:,i] = renorm_data[:,i] + min_val[i]
+  try:
+    for i in range(dim):
+      renorm_data[:,i] = renorm_data[:,i] * (max_val[i] + 1e-6)   
+      renorm_data[:,i] = renorm_data[:,i] + min_val[i]
+  except:
+     for i in range(dim):
+      renorm_data[:,i] = renorm_data[:,i] * (max_val + 1e-6)   
+      renorm_data[:,i] = renorm_data[:,i] + min_val
     
   return renorm_data
 
@@ -216,7 +220,8 @@ def sample_batch_index(total, batch_size):
   
 def prob(num_al, N):
   '''
-  Calculate probability(h_{k+1}|h_1,...,h_k)
+  Calculate probability(h_{k+1,j}|h_1,...,h_k)
+
   Args:
     - X: a matrix with missing genotypes
     

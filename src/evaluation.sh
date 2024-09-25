@@ -3,6 +3,7 @@ input_path=$1
 data_name=$2 # Prefix name of data
 num_al=$3
 
+
 echo "GIP"
 if [[ ${num_al} == 2 ]]; then
     # Unzip imputed haplotype data
@@ -19,7 +20,8 @@ ${input_path}/${data_name}.ori.hap \
 ${input_path}/${data_name}.missing.hap \
 ${input_path}/output/${data_name}.missing.imputed.gip.hap \
 ${num_al} \
-gip
+gip_edit
+
 
 : << 'COMMENT'
 echo "GAIN"
@@ -28,8 +30,8 @@ if [[ ${num_al} == 2 ]]; then
     gunzip -f ${input_path}/output/${data_name}.missing.imputed.gain.hap.gz
 
     # Diplotype to haplotype
-    #bcftools convert --haplegendsample ${input_path}/${data_name}.ori  ${input_path}/${data_name}.ori.vcf
-    #gunzip -f ${input_path}/${data_name}.ori.hap.gz
+    bcftools convert --haplegendsample ${input_path}/${data_name}.ori  ${input_path}/${data_name}.ori.vcf
+    gunzip -f ${input_path}/${data_name}.ori.hap.gz
 fi
 
 # Evaluate gip
@@ -39,6 +41,8 @@ ${input_path}/${data_name}.missing.hap \
 ${input_path}/output/${data_name}.missing.imputed.gain.hap \
 ${num_al} \
 gain
+
+: << 'COMMENT'
 # COMMENT
 echo "BEAGLE5.4"
 if [[ ${num_al} == 2 ]]; then
