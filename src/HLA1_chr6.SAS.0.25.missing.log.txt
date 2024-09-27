@@ -146,3 +146,5 @@ Sample: HLA1_chr6.SAS.0.25.missing
 0 minutes and 0 seconds elapsed.
 Sample: HLA1_chr6.SAS.0.25.missing
 0 minutes and 50 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+29 minutes and 32 seconds elapsed.
