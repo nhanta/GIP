@@ -12,27 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-'''Utility functions for GAIN.
+'''Utility functions for GIP.
 
 (1) normalization: MinMax Normalizer
 (2) renormalization: Recover the data from normalzied data
 (3) rounding: Handlecategorical variables after imputation
 (4) rmse_loss: Evaluate imputed data in terms of RMSE
-(5) xavier_init: Xavier initialization
-(6) binary_sampler: sample binary random variables
-(7) uniform_sampler: sample uniform random variables
-(8) sample_batch_index: sample random batch index
+(5) binary_sampler: sample binary random variables
+(6) uniform_sampler: sample uniform random variables
+(7) sample_batch_index: sample random batch index
 '''
  
 # Necessary packages
 import numpy as np
 import pandas as pd
-import gzip
-#import tensorflow as tf
-##IF USING TF 2 use following import to still use TF < 2.0 Functionalities
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
-
 
 def normalization (data, parameters=None):
   '''Normalize data in [0, 1] range.
@@ -153,22 +146,6 @@ def rmse_loss (ori_data, imputed_data, data_m):
   rmse = np.sqrt(nominator/float(denominator))
   
   return rmse
-
-
-def xavier_init(size):
-  '''Xavier initialization.
-  
-  Args:
-    - size: vector size
-    
-  Returns:
-    - initialized random vector.
-  '''
-  np.random.seed(7)
-  in_dim = size[0]
-  xavier_stddev = 1. / tf.sqrt(in_dim / 2.)
-  return tf.random_normal(shape = size, stddev = xavier_stddev)
-      
 
 def binary_sampler(p, rows, cols):
   '''Sample binary random variables.

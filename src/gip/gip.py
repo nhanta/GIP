@@ -20,7 +20,9 @@ def G(X, Y, num_alleles, num_haplotypes):
 
     # Compute prob(h_{k+1,j}|h_1,...,h_k) for each row pair.
     def compute_prob_k(X, y):
-        prob_k = alpha + beta - alpha * round(torch.abs(y - X))
+        # prob_k = alpha + beta - alpha * round(torch.abs(y - X))
+        gamma = 10**6
+        prob_k = alpha * torch.exp(-gamma * (y - X) ** 2) + beta
         return torch.sum(prob_k, dim=0)
 
     pr = torch.stack([compute_prob_k(X, y) for y in Y], dim=0)
