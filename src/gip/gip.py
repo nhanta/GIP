@@ -121,7 +121,7 @@ class GIP:
         # Normalize the data
         parameters = {'min_val': 0, 'max_val': num_alleles - 1}
         norm_data, norm_parameters = normalization(self.data_x, parameters)
-        norm_data_x = np.nan_to_num(norm_data, 0)
+        norm_data_x = np.nan_to_num(norm_data, nan=0)
 
         # Convert data and mask to PyTorch tensors and move to device
         norm_data_x = torch.tensor(norm_data_x, dtype=torch.float32).to(device)
