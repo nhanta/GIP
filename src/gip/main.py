@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 
 from gip import GIP
-from utils import save_hap, read_vcf, save_vcf, diploid_to_haploid, haploid_to_diploid
+from utils import save_hap
 
 def main (args):
   '''Main function for the 1KGP phase 3.
@@ -47,7 +47,7 @@ def main (args):
   missing_data = args.missing_data
   output_data = args.output_data
   num_alleles = args.num_alleles
-  
+
   gip_parameters = {'batch_size': args.batch_size,
                      'hint_rate': args.hint_rate,
                      'alpha': args.alpha,
@@ -57,50 +57,18 @@ def main (args):
   system_parameters = {'num_cpus': args.num_cpus,
                        'num_gpus': args.num_gpus
                      }
-  if num_alleles == 2:
-    # Load missing data
-    miss_data_x = pd.read_csv(missing_data, header = None, sep = " ").to_numpy()
-    data_m = miss_data_x == "?"
-  else:
-    # Load original data
-    data = read_vcf(missing_data[0:-3] + "vcf")
-    geno = data.iloc[:, 9::]
-    col = geno.columns
-    geno.rename(columns={col[-1]:col[-1].split("\n")[0]}, inplace=True)
-    
-    # Convert diploid to haploid
-    miss_data_x = diploid_to_haploid(geno).to_numpy()
-    save_hap(miss_data_x, missing_data[0:-3] + "hap")
-    data_m = miss_data_x == "."
+
+  # Load missing data
+  miss_data_x = pd.read_csv(missing_data, header = None, sep = " ").to_numpy()
+  data_m = miss_data_x == "?"
+
 
   miss_data_x[data_m] = np.nan
   miss_data_x = miss_data_x.astype(float)
   # Impute missing data
   imputed_data_x = GIP(miss_data_x, gip_parameters, system_parameters).impute(method)
-  
+
   save_hap(imputed_data_x.astype(int).astype(str), output_data)
-
-  if num_alleles != 2:
-    ori_data = read_vcf(missing_data[0:-11] + "ori.vcf")
-    ori_geno = ori_data.iloc[:, 9::]
-    ori_col = geno.columns
-    ori_geno.rename(columns={ori_col[-1]:ori_col[-1].split("\n")[0]}, inplace=True)
-    
-    # Convert diploid to haploid for original data
-    ori_hap = diploid_to_haploid(ori_geno).to_numpy()
-    save_hap(ori_hap, missing_data[0:-11] + "ori.hap")
-    print("Save the original haplotype to the path: ", missing_data[0:-11] + "ori.hap")
-    # Output the imputed diploid data
-    im_data = pd.DataFrame(data = imputed_data_x.astype(int).astype(str), columns = list(range(2*len(ori_col))))
-    imputed_data_value = haploid_to_diploid(im_data).to_numpy()
-    imputed_data = pd.DataFrame(data = imputed_data_value, columns = ori_col)
-
-    with open(missing_data[0:-3] + "header.txt") as f:
-        # Read the contents of the file into a variable
-        header = f.read()
-
-    save_vcf(pd.concat([ori_data.iloc[:, 0:9], imputed_data], axis = 1), output_data[0:-3] + "imputed" + "." + method + ".vcf", header)
-
 
 if __name__ == '__main__':  
   
