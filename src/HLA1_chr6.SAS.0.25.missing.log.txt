@@ -164,3 +164,25 @@ Sample: HLA1_chr6.SAS.0.25.missing
 31 minutes and 13 seconds elapsed.
 Sample: HLA1_chr6.SAS.0.25.missing
 29 minutes and 30 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+33 minutes and 40 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+49 minutes and 28 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+7 minutes and 4 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+1 minutes and 14 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+0 minutes and 55 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+0 minutes and 40 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+18 minutes and 48 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+14 minutes and 10 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+227 minutes and 15 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+31 minutes and 56 seconds elapsed.
+Sample: HLA1_chr6.SAS.0.25.missing
+7 minutes and 11 seconds elapsed.
