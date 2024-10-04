@@ -250,48 +250,6 @@ def save_vcf(data, output_VCF, header = """##fileformat=VCFv4.1\n"""):
   data.to_csv(output_VCF, sep="\t", mode='a', index=False)
 
 def save_hap(data, output_path):
-   cols = list(range(data.shape[1]))
-   df = pd.DataFrame(data = data, columns = cols)
-   df.to_csv(output_path, header = False, index = False, sep ="\t", mode='a')
-
-# Convert diploid to haploid
-def diploid_to_haploid(data):    
-# Define the columns to split and the separator
-    columns_to_split = data.columns
-    df = pd.DataFrame()
-    value = []
-    # Split the specified columns
-    for col in columns_to_split:
-        try:
-            # Split the column into multiple columns
-            split_cols = data[col].str.split('|', expand=True)
-        except:
-            split_cols = data[col].str.split('/', expand=True)
-
-        # Rename the split columns to avoid name clashes
-        split_cols.columns = [f"{col}_{i+1}" for i in range(split_cols.shape[1])]
-        
-        # Concatenate the split columns back to the original DataFrame
-        df = pd.concat([df, split_cols], axis=1)
-        
-    return(df)
-
-# Convert haploid to diploid with data frame
-def haploid_to_diploid(df):    
-    # Function to merge two columns with a separator
-    def merge_columns(df, col1, col2):
-        return df[col1].astype(str) + "|" + df[col2].astype(str)
-
-    # List to hold the merged columns
-    merged_columns = []
-    l = df.shape[1] - 1
-    
-    # Loop through pairs of adjacent columns
-    for i in range(0, l, 2):
-        merged_col = merge_columns(df, df.columns[i], df.columns[i+1])
-        merged_columns.append(merged_col)
-
-    # Create a new DataFrame with the merged columns
-    merged_df = pd.DataFrame(merged_columns).T
-
-    return(merged_df)
+  cols = list(range(data.shape[1]))
+  df = pd.DataFrame(data = data, columns = cols)
+  df.to_csv(output_path, header = False, index = False, sep =" ", mode='w')
