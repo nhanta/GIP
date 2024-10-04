@@ -21,8 +21,9 @@ def G(X, Y, num_alleles, num_haplotypes):
     # Compute prob(h_{k+1,j}|h_1,...,h_k) for each row pair.
     def compute_prob_k(X, y):
         # prob_k = alpha + beta - alpha * round(torch.abs(y - X))
-        gamma = 10**6
-        prob_k = alpha * torch.exp(-gamma * (y - X) ** 2) + beta
+        gamma = 10 ** 4
+        #prob_k = alpha * torch.exp(-gamma * (y - X) ** 2) + beta
+        prob_k = alpha / (1 + gamma * (y - X)) + beta
         return torch.sum(prob_k, dim=0)
 
     pr = torch.stack([compute_prob_k(X, y) for y in Y], dim=0)
@@ -102,7 +103,6 @@ class GIP:
         device = torch.device('cuda' if ngpu > 0 and torch.cuda.is_available() else 'cpu')
         # Set the number of threads for parallelism in PyTorch
         if ncpu: torch.set_num_threads(ncpu)
-
         # Check for available GPUs and set device
         print(f"Using device: {device}")
 
@@ -146,7 +146,7 @@ class GIP:
         g_optimizer = optim.Adam(generator.parameters())
 
         # Loss function - Binary Cross-Entropy (BCE) for classification
-        bce_loss = nn.BCELoss(reduction='mean')
+        #bce_loss = nn.BCELoss(reduction='mean')
 
         # Training loop
         for it in tqdm(range(iterations)):    
