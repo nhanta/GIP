@@ -1,6 +1,5 @@
 from __future__ import print_function, division
 import pandas as pd
-import numpy as np
 from math import sqrt
 from scipy.special import ndtri
 from sklearn.metrics import confusion_matrix, roc_auc_score, RocCurveDisplay, PrecisionRecallDisplay
