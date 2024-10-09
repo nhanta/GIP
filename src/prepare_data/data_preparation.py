@@ -8,10 +8,11 @@ if __name__ == '__main__':
     prog='GIP',
     description='Data generation',
     epilog='Help')
-  parser.add_argument('-p', '--data_path', metavar='p', type=str, help='Data path')
-  parser.add_argument('-s', '--superpopulation_code', metavar='s',
-                      help='Superpopulation Code', type=str, nargs='+')
-  parser.add_argument('-r', '--rate', metavar='r', type=str,
+  parser.add_argument('-p', '--data_path', metavar='p', type=str,
+                      help='Data path containing vcf and metadata')
+  parser.add_argument('-s', '--superpopulation_code', metavar='s', default=['all'],
+                      help='Super population code will be selected', type=str, nargs='+')
+  parser.add_argument('-r', '--rate', metavar='r', type=str, default=['0.25'],
                       help='Rate of missing data', nargs = '+')
   parser.add_argument('-m', '--meta', metavar='m', type=str, help='Metadata file')
   parser.add_argument('-n', '--data_name', metavar='n', type=str, help='Prefix of data name')
@@ -32,29 +33,19 @@ Import data may take several minutes, please wait...
 
   vcf_path = Path(args.data_path, args.data_name + ".vcf")
   meta_path = Path(args.data_path, args.meta)
-  header = ''
-  # Load header
-  with open(vcf_path, 'r') as f:
-    # Read the contents of the file into a variable
-    for i in f:
-      line = f.readline()
-      if line.startswith("##"):
-        header += line
-      else:
-        break
 
-  # Load original data
-  data = read_vcf(vcf_path)
+  # Load data
+  header, data = read_vcf(vcf_path)
   data.columns = [c.replace("\n", "_") for c in data.columns]
   geno = data.iloc[:, 9::]
   pop = geno.columns
   print("Number of all population: ", len(list(pop)))
+  print("Number of positions: ", geno.shape[0])
 
   # Load meta_data
   meta_data = pd.read_csv(meta_path, sep="\t")
   # split sample by meta data
-  geno_data = {}
-  geno_data['all'] = geno
+  geno_data = {'all': geno}
   for code in args.superpopulation_code:
     if code == 'all': continue
     sample = meta_data["Sample name"][meta_data["Superpopulation code"] == code]
