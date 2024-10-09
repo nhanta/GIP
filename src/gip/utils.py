@@ -221,33 +221,6 @@ def prob(num_al, N):
   B = (1/num_al) * (theta/(k + theta))
     
   return A, B
-    
-
-# Read a vcf file
-def read_vcf(vcf_path):
-    with open(vcf_path, "rt") as ifile:
-          for line in ifile:
-            if line.startswith("#CHROM"):
-                  vcf_names = [x for x in line.split('\t')]
-                  break
-    ifile.close()
-    data = pd.read_csv(vcf_path, comment='#', sep="\s+", header=None, names=vcf_names)
-    return data
-
-def get_data(X, miss_rate):
-    # Parameters
-    no, dim = X.shape
-
-    # Introduce missing data
-    data_m = binary_sampler(1-miss_rate, no, dim)
-    miss_data_x = X.copy()
-    miss_data_x[data_m == 0] = ".|."
-    return X, miss_data_x
-  
-def save_vcf(data, output_VCF, header = """##fileformat=VCFv4.1\n"""):
-  with open(output_VCF, 'w') as vcf:
-    vcf.write(header)
-  data.to_csv(output_VCF, sep="\t", mode='a', index=False)
 
 def save_hap(data, output_path):
   cols = list(range(data.shape[1]))
