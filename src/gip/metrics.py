@@ -114,10 +114,3 @@ def measure (TP, FP, FN, TN, a):
             sensitivity_confidence_interval, specificity_confidence_interval, \
             acc_confidence_interval)
 #mcc, mcc_confidence_interval
-
-# Count accuracy
-def eval_acc (y_test, pred):
-
-    acc = sum(y_test == pred)/len(y_test)
-    print("Accuracy: ", acc)
-    return acc
