@@ -15,9 +15,11 @@ pip install -r requirements.txt
 - [BCFtools](https://samtools.github.io/bcftools/bcftools.html)
 - [GATK](https://gatk.broadinstitute.org/hc/en-us)
 - [PLINK](https://www.cog-genomics.org/plink/2.0/)
-- [Beagle 5.4](https://faculty.washington.edu/browning/beagle/beagle.html)
+- [Beagle 5.4](https://faculty.washington.edu/browning/beagle/beagle.21Apr21.304.jar)[^1]
 - [Minimac4](https://github.com/statgen/Minimac4)
 - [Impute5](https://jmarchini.org/software/#impute-5)
+
+[^1]: Run with java 8 only
 
 ## Data Preparation 
 Single-end read data includes [139 obesity samples](https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP139885&o=acc_s%3Aa) from Ion Torrent. We run [bash script files](https://github.com/nhanta/Advanced_Methods_for_Disease_Risk_Prediction/tree/main/gatk) to download data, and extract the data to fastq.
