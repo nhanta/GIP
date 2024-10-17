@@ -23,8 +23,8 @@ def G(X, Y, num_alleles, num_haplotypes):
         # prob_k = alpha + beta - alpha * round(torch.abs(y - X))
         gamma = 10 ** 4
         #prob_k = alpha * torch.exp(-gamma * (y - X) ** 2) + beta
-        prob_k = alpha / (1 + gamma * (y - X)) + beta
-        return torch.sum(prob_k, dim=0)
+        prob_k =  alpha / (1 + gamma * (y - X) ** 2) + beta 
+        return (1/num_haplotypes) * torch.sum(prob_k, dim=0) 
 
     pr = torch.stack([compute_prob_k(X, y) for y in Y], dim=0)
     return pr
@@ -55,11 +55,17 @@ class GIP_Generator(nn.Module):
 
     def forward(self, x, m):
         inputs = torch.cat([x, m], dim=1)
-        h1 = torch.relu(self.fc1(inputs))
-        z1 = self.fc2(h1)
-        h2 = G(h1, z1, self.num_alleles, x.shape[0])
-        logits = self.fc3(h2)
-        return torch.sigmoid(logits)
+        z1 = self.fc1(inputs)
+        h1 = torch.relu(z1)
+        z2 = self.fc2(h1)
+        #h2 = torch.relu(z2)
+        h2 = nn.functional.gumbel_softmax(z2, tau = 1.0, hard = True)
+        z3 = self.fc3(h2)
+        h3 = G(h2, z3, self.num_alleles, x.shape[0])
+        #h2 = G(h1, z1, self.num_alleles, x.shape[0])
+        #logits = self.fc3(h2)
+        return h3
+        #torch.sigmoid(logits)
 
 # GAIN Generator Network
 class GAIN_Generator(nn.Module):
